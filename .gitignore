@@ -3,6 +3,7 @@ dist/
 .astro/
 .wrangler/
 node_modules/
+package-lock.json
 
 # Environment variables
 .env

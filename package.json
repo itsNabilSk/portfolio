@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.3",
-    "@emnapi/core": "^1.11.3",
-    "@emnapi/runtime": "^1.11.3",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.2",
     "astro": "^7.3.3",

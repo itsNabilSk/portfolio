@@ -1,6 +1,7 @@
 # Build & Runtime
 dist/
 .astro/
+.wrangler/
 node_modules/
 
 # Environment variables

@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+
+const {
+  title = "Mohammed Nabil Shaikh — Software Engineer & Full Stack Developer",
+  description = "Portfolio of Mohammed Nabil Shaikh, a Software Engineer focused on full-stack applications, SaaS products, backend systems, business logic, AI-assisted workflows, performance, and technical SEO.",
+  image = "/og-image.png",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://nabilshaikh.dev").href,
+  type = "website",
+} = Astro.props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohammed Nabil Shaikh",
+  "alternateName": "Nabil Shaikh",
+  "jobTitle": "Software Engineer",
+  "description": "Software Engineer focused on full-stack applications, SaaS products, backend systems, business logic, AI-assisted workflows, performance, and technical SEO.",
+  "url": "https://nabilshaikh.dev",
+  "sameAs": [
+    "https://github.com/itsNabilSk",
+    "https://www.linkedin.com/in/nabil-shaikh-124a292b8/"
+  ],
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "St. Francis Institute of Technology",
+      "location": "Mumbai, India"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "M.H. Saboo Siddik Polytechnic",
+      "location": "Mumbai, India"
+    }
+  ],
+  "knowsAbout": [
+    "Software Engineering",
+    "Full Stack Development",
+    "MERN Stack",
+    "Node.js",
+    "Express.js",
+    "React.js",
+    "MongoDB",
+    "RESTful API Design",
+    "JWT Authentication",
+    "Docker",
+    "Technical SEO",
+    "Web Performance Engineering"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Nabil Shaikh — Portfolio",
+  "url": "https://nabilshaikh.dev",
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Mohammed Nabil Shaikh"
+  }
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="canonical" href={canonicalURL} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Theme Init Script to Prevent FOUC -->
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+  const isDark = getThemePreference() === 'dark';
+  document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+</script>
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content="Mohammed Nabil Shaikh" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.site || "https://nabilshaikh.dev")} />
+<meta property="og:site_name" content="Nabil Shaikh Portfolio" />
+
+<!-- Twitter / X -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.site || "https://nabilshaikh.dev")} />
+
+<!-- Preload Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Structured Data JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

@@ -1,0 +1,29 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title = "Mohammed Nabil Shaikh — Software Engineer & Full Stack Developer",
+  description = "Portfolio of Mohammed Nabil Shaikh, a Software Engineer focused on full-stack applications, SaaS products, backend systems, business logic, AI-assisted workflows, performance, and technical SEO.",
+  image = "/og-image.png",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body class="bg-theme text-theme-primary antialiased relative min-h-screen">
+    <Navbar />
+    
+    <main id="main-content" class="relative z-10">
+      <slot />
+    </main>
+
+    <div class="relative z-10">
+      <Footer />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+---
+import { educationList, certificationsList } from '../data/education.js';
+---
+
+<section class="py-24 md:py-32 bg-theme hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      
+      <!-- Left Column: Education -->
+      <div class="lg:col-span-6 flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="mb-8 pb-4 border-b border-[var(--border)]">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">08 / ACADEMIC BACKGROUND</span>
+              <span class="text-[var(--border)]">/</span>
+              <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">ENGINEERING DEGREE</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">
+              Education
+            </h2>
+          </div>
+
+          <!-- List -->
+          <div class="space-y-6">
+            {educationList.map((item) => (
+              <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                  <h3 class="text-lg font-serif text-[var(--text-primary)] font-normal">{item.institution}</h3>
+                  <span class="text-xs font-mono text-[var(--text-muted)]">{item.period}</span>
+                </div>
+                
+                <div class="text-xs font-semibold text-[var(--accent)] uppercase font-mono mb-2">
+                  {item.degree} — {item.field}
+                </div>
+
+                <div class="inline-block px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-xs font-mono text-[var(--text-primary)] mb-4">
+                  {item.scoreLabel}: <span class="font-bold text-[var(--accent)]">{item.scoreValue}</span> · {item.location}
+                </div>
+
+                <ul class="space-y-1.5">
+                  {item.highlights.map((h) => (
+                    <li class="text-xs text-[var(--text-muted)] font-sans flex items-start gap-2">
+                      <span class="text-[var(--accent)] font-mono text-xs font-bold">↳</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Certifications -->
+      <div class="lg:col-span-6 flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="mb-8 pb-4 border-b border-[var(--border)]">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">09 / VERIFIED CREDENTIALS</span>
+              <span class="text-[var(--border)]">/</span>
+              <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">CERTIFICATIONS</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">
+              Industry Certifications
+            </h2>
+          </div>
+
+          <!-- List -->
+          <div class="space-y-6">
+            {certificationsList.map((cert) => (
+              <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[10px] font-mono uppercase text-[var(--accent)] font-semibold border border-[var(--border)]">
+                    {cert.badge}
+                  </span>
+                  <span class="text-xs font-mono text-[var(--text-muted)]">{cert.year}</span>
+                </div>
+
+                <h3 class="text-lg font-serif text-[var(--text-primary)] font-normal mb-1">
+                  {cert.title}
+                </h3>
+
+                <div class="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider mb-3">
+                  Issuer: <span class="text-[var(--text-primary)] font-semibold">{cert.issuer}</span>
+                </div>
+
+                <p class="text-xs text-[var(--text-muted)] font-sans leading-relaxed">
+                  {cert.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

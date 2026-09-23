@@ -1,0 +1,307 @@
+---
+// Google Antigravity-Inspired Background (Hero Scoped — Zero Particles)
+// Subtle Technical Grid + Small Burgundy Cursor Orb & Localized Elastic Deflection
+---
+
+<canvas
+  id="antigravity-canvas"
+  class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+  aria-hidden="true"
+></canvas>
+
+<script>
+  (function initHeroAntigravitySystem() {
+    const canvas = document.getElementById('antigravity-canvas');
+    if (!canvas || !(canvas instanceof HTMLCanvasElement)) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    const container = canvas.parentElement || document.body;
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let width = 0;
+    let height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    // Cursor Orb & Field Epicenter State
+    const orb = {
+      x: -3000,
+      y: -3000,
+      targetX: -3000,
+      targetY: -3000,
+      strength: 0,
+      targetStrength: 0,
+      radius: 165, // Localized elastic grid deflection radius
+    };
+
+    interface GridVertex {
+      ox: number;
+      oy: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+    }
+
+    let grid: GridVertex[][] = [];
+    const GRID_SPACING = 54; // Clean, structural 54px technical grid
+    let animationFrameId: number;
+
+    function resize() {
+      const rect = container.getBoundingClientRect();
+      width = rect.width || window.innerWidth;
+      height = rect.height || 750;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.scale(dpr, dpr);
+
+      // Build Structural Hero Grid
+      grid = [];
+      const cols = Math.ceil(width / GRID_SPACING) + 2;
+      const rows = Math.ceil(height / GRID_SPACING) + 2;
+
+      for (let r = 0; r < rows; r++) {
+        grid[r] = [];
+        for (let c = 0; c < cols; c++) {
+          const ox = (c - 0.5) * GRID_SPACING;
+          const oy = (r - 0.5) * GRID_SPACING;
+          grid[r][c] = {
+            ox,
+            oy,
+            x: ox,
+            y: oy,
+            vx: 0,
+            vy: 0,
+          };
+        }
+      }
+    }
+
+    window.addEventListener('resize', resize, { passive: true });
+    resize();
+
+    // Mouse Tracking relative to Hero Container
+    if (!isTouch && !prefersReducedMotion) {
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = container.getBoundingClientRect();
+        
+        if (
+          e.clientX >= rect.left - 30 &&
+          e.clientX <= rect.right + 30 &&
+          e.clientY >= rect.top - 30 &&
+          e.clientY <= rect.bottom + 30
+        ) {
+          orb.targetX = e.clientX - rect.left;
+          orb.targetY = e.clientY - rect.top;
+          orb.targetStrength = 1.0;
+          if (orb.x < -2000) {
+            orb.x = orb.targetX;
+            orb.y = orb.targetY;
+          }
+        } else {
+          orb.targetStrength = 0.0;
+        }
+      };
+
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+      window.addEventListener('mouseleave', () => {
+        orb.targetStrength = 0.0;
+      }, { passive: true });
+    }
+
+    // Color tokens
+    function getThemePalette() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        return {
+          gridLine: 'rgba(255, 255, 255, 0.045)',      // 4.5% subtle technical grid in dark mode (unchanged)
+          orbCore: 'rgba(225, 75, 145, 0.92)',        // Burgundy orb core
+          orbGlow: 'rgba(225, 75, 145, 0.26)',        // Soft ambient glow
+        };
+      } else {
+        const screenWidth = window.innerWidth;
+        let lineAlpha = 0.52;
+        if (screenWidth < 640) {
+          lineAlpha = 0.38; // Mobile: subtle but visible
+        } else if (screenWidth < 1024) {
+          lineAlpha = 0.45; // Tablet: slightly reduced contrast
+        } else {
+          lineAlpha = 0.55; // Desktop: clearly visible grid (0.45–0.60)
+        }
+
+        return {
+          gridLine: `rgba(155, 150, 142, ${lineAlpha})`, // Soft warm neutral gray (~#D9D6D2 perceived)
+          orbCore: 'rgba(114, 28, 80, 0.88)',            // Burgundy orb core
+          orbGlow: 'rgba(114, 28, 80, 0.18)',            // Soft ambient glow
+        };
+      }
+    }
+
+    let lastTime = performance.now();
+    let totalTime = 0;
+
+    function animate(currentTime: number) {
+      const delta = Math.min((currentTime - lastTime) / 1000, 0.05);
+      lastTime = currentTime;
+
+      const palette = getThemePalette();
+
+      // Static fallback for reduced motion
+      if (prefersReducedMotion) {
+        ctx.clearRect(0, 0, width, height);
+        ctx.strokeStyle = palette.gridLine;
+        ctx.lineWidth = 1;
+
+        const rows = grid.length;
+        const cols = rows > 0 ? grid[0].length : 0;
+
+        for (let r = 0; r < rows; r++) {
+          ctx.beginPath();
+          for (let c = 0; c < cols; c++) {
+            if (c === 0) ctx.moveTo(grid[r][c].ox, grid[r][c].oy);
+            else ctx.lineTo(grid[r][c].ox, grid[r][c].oy);
+          }
+          ctx.stroke();
+        }
+
+        for (let c = 0; c < cols; c++) {
+          ctx.beginPath();
+          for (let r = 0; r < rows; r++) {
+            if (r === 0) ctx.moveTo(grid[r][c].ox, grid[r][c].oy);
+            else ctx.lineTo(grid[r][c].ox, grid[r][c].oy);
+          }
+          ctx.stroke();
+        }
+        return;
+      }
+
+      totalTime += delta;
+      ctx.clearRect(0, 0, width, height);
+
+      // Smooth Orb Interpolation (responsive physical lag: ~120ms)
+      if (!isTouch) {
+        orb.x += (orb.targetX - orb.x) * (delta * 8.5);
+        orb.y += (orb.targetY - orb.y) * (delta * 8.5);
+        orb.strength += (orb.targetStrength - orb.strength) * (delta * 4.5);
+      }
+
+      // ==========================================
+      // 1. BASE STRUCTURAL GRID PHYSICS & ELASTIC DEFLECTION
+      // ==========================================
+      const rows = grid.length;
+      const cols = rows > 0 ? grid[0].length : 0;
+      const gridRadius = orb.radius;
+      const gridRadiusSq = gridRadius * gridRadius;
+      const GRID_SPRING = 0.09;
+      const GRID_DAMPING = 0.85;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const pt = grid[r][c];
+
+          // Continuous micro-harmonic breathing on grid vertices
+          const ambientWaveX = Math.sin(totalTime * 1.2 + (c * 0.4) + (r * 0.3)) * 0.7;
+          const ambientWaveY = Math.cos(totalTime * 1.0 + (c * 0.3) + (r * 0.4)) * 0.7;
+
+          let forceX = 0;
+          let forceY = 0;
+
+          if (!isTouch && orb.strength > 0.01) {
+            const dx = pt.ox - orb.x;
+            const dy = pt.oy - orb.y;
+            const distSq = dx * dx + dy * dy;
+
+            if (distSq < gridRadiusSq && distSq > 0) {
+              const dist = Math.sqrt(distSq);
+              const factor = Math.pow(1 - dist / gridRadius, 2);
+              
+              // Continuous harmonic breathing pulse around stationary orb
+              const pulse = Math.sin(totalTime * 2.4 - dist * 0.035) * 0.25;
+              const force = factor * (3.5 + pulse * 1.5) * orb.strength;
+              
+              const angle = Math.atan2(dy, dx);
+              forceX = Math.cos(angle) * force;
+              forceY = Math.sin(angle) * force;
+            }
+          }
+
+          const targetX = pt.ox + ambientWaveX + forceX;
+          const targetY = pt.oy + ambientWaveY + forceY;
+
+          const ax = (targetX - pt.x) * GRID_SPRING;
+          const ay = (targetY - pt.y) * GRID_SPRING;
+          pt.vx = (pt.vx + ax) * GRID_DAMPING;
+          pt.vy = (pt.vy + ay) * GRID_DAMPING;
+          pt.x += pt.vx;
+          pt.y += pt.vy;
+        }
+      }
+
+      // Draw Grid Lines
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = palette.gridLine;
+
+      // Horizontal lines
+      for (let r = 0; r < rows; r++) {
+        ctx.beginPath();
+        for (let c = 0; c < cols; c++) {
+          if (c === 0) ctx.moveTo(grid[r][c].x, grid[r][c].y);
+          else ctx.lineTo(grid[r][c].x, grid[r][c].y);
+        }
+        ctx.stroke();
+      }
+
+      // Vertical lines
+      for (let c = 0; c < cols; c++) {
+        ctx.beginPath();
+        for (let r = 0; r < rows; r++) {
+          if (r === 0) ctx.moveTo(grid[r][c].x, grid[r][c].y);
+          else ctx.lineTo(grid[r][c].x, grid[r][c].y);
+        }
+        ctx.stroke();
+      }
+
+      // ==========================================
+      // 2. SMALL CURSOR ORB (Interactive Focal Point)
+      // ==========================================
+      if (!isTouch && orb.strength > 0.01) {
+        // Continuous subtle breathing pulse (5–8% scale variation)
+        const pulse = Math.sin(totalTime * 2.2) * 0.07;
+        const orbScale = 1.0 + pulse;
+
+        // A. Subtle soft halo
+        ctx.fillStyle = palette.orbGlow;
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, 13 * orbScale, 0, Math.PI * 2);
+        ctx.fill();
+
+        // B. Clean 7–8px circular orb core
+        ctx.fillStyle = palette.orbCore;
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, 3.8 * orbScale, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (!document.hidden) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        lastTime = performance.now();
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        cancelAnimationFrame(animationFrameId);
+      }
+    });
+
+    lastTime = performance.now();
+    animationFrameId = requestAnimationFrame(animate);
+  })();
+</script>

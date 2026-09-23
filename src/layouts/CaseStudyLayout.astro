@@ -1,0 +1,96 @@
+---
+import Layout from './Layout.astro';
+
+const {
+  title,
+  subtitle,
+  category,
+  number,
+  repoUrl,
+  technologies = [],
+  description,
+} = Astro.props;
+---
+
+<Layout title={`${title} — Case Study | Nabil Shaikh`} description={description}>
+  <!-- Case Study Header -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-24 bg-theme hairline-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb & Tag -->
+      <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--text-muted)] mb-6">
+        <a href="/" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
+        <span class="text-[var(--border)]">/</span>
+        <a href="/#work" class="hover:text-[var(--text-primary)] transition-colors">Selected Systems</a>
+        <span class="text-[var(--border)]">/</span>
+        <span class="text-[var(--accent)] font-semibold">SYSTEM {number}</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-primary)] tracking-tight mb-4 font-normal">
+        {title}
+      </h1>
+
+      <p class="text-lg sm:text-xl text-[var(--text-muted)] font-sans font-normal leading-relaxed mb-8">
+        {subtitle}
+      </p>
+
+      <!-- Meta Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-[var(--border)] font-mono text-xs">
+        <div>
+          <span class="text-[var(--text-muted)] uppercase text-[10px]">CATEGORY:</span>
+          <span class="text-[var(--text-primary)] font-semibold ml-1">{category}</span>
+        </div>
+        <div>
+          <span class="text-[var(--text-muted)] uppercase text-[10px]">ROLE:</span>
+          <span class="text-[var(--text-primary)] font-semibold ml-1">Architect & Full Stack Developer</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 rounded-md bg-[var(--accent)] hover:opacity-90 text-white text-xs font-mono uppercase tracking-wider transition-opacity flex items-center gap-1.5 font-semibold"
+          >
+            <span>GitHub Repo</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tech stack pills -->
+      <div class="flex flex-wrap gap-2 pt-6">
+        {technologies.map((t) => (
+          <span class="px-3 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-xs font-mono text-[var(--text-primary)]">
+            {t}
+          </span>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Case Study Main Content -->
+  <article class="py-20 bg-theme hairline-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <slot />
+    </div>
+  </article>
+
+  <!-- Bottom CTA: Next Project or Home -->
+  <section class="py-16 bg-[var(--surface-subtle)] hairline-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <div class="text-xs font-mono text-[var(--text-muted)] uppercase">SYSTEM CASE STUDY COMPLETED</div>
+        <div class="text-xl font-serif text-[var(--text-primary)] mt-1">Explore other engineered systems</div>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-mono">
+        <a href="/#work" class="px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white uppercase tracking-wider transition-opacity font-semibold">
+          View All Systems
+        </a>
+        <a href="/contact" class="px-5 py-3 rounded-md bg-[var(--surface)] hover:bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] uppercase tracking-wider transition-colors">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

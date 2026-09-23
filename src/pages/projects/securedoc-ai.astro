@@ -1,0 +1,171 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { projects } from '../../data/projects.js';
+
+const project = projects.find((p) => p.id === 'securedoc-ai');
+---
+
+<CaseStudyLayout
+  title={project.title}
+  subtitle="In-memory sensitive data detection and pre-LLM redaction pipeline for confidential PDF documents."
+  category={project.categoryBadge}
+  number={project.number}
+  repoUrl={project.repoUrl}
+  technologies={project.technologies}
+  description={project.description}
+>
+  <!-- 01 Overview -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>01 / CONTEXT & PURPOSE</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Overview</h2>
+    <p class="text-base text-[var(--text-muted)] font-sans leading-relaxed">
+      <strong>SecureDoc AI</strong> is a backend pipeline engineered to ingest confidential documents (such as invoices, financial statements, and identification papers), detect personally identifiable information (PII), and redact sensitive data before downstream LLM processing or analytical storage.
+    </p>
+    <p class="text-base text-[var(--text-muted)] font-sans leading-relaxed">
+      By eliminating disk persistence during parsing and executing regex-based redactions in memory, the system ensures that unredacted customer data is never exposed to third-party AI APIs or persistent disk caches.
+    </p>
+  </section>
+
+  <!-- 02 Problem -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>02 / CORE CHALLENGE</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">The Problem</h2>
+    <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-3 text-sm text-[var(--text-muted)]">
+      <p>
+        Most generative AI document processing workflows send raw text or entire PDFs directly to third-party LLM providers. In regulated environments (finance, healthcare, legal), this introduces severe data leakage risks:
+      </p>
+      <ul class="space-y-2 list-disc list-inside text-xs sm:text-sm text-[var(--text-primary)]">
+        <li><strong>Permanent Disk Exposure:</strong> Standard multipart file uploaders write temp files to disk before parsing, risking residual leaks.</li>
+        <li><strong>Accidental PII Ingestion:</strong> Sensitive identifiers like PAN cards, Aadhaar IDs, phone numbers, and private emails get passed unredacted into prompt contexts.</li>
+        <li><strong>API Failures & Inefficient Payloads:</strong> Malformed PDFs and large payloads cause unexpected crashes without defensive input guards.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 Architecture Diagram -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>03 / SYSTEM TOPOLOGY</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Pipeline Architecture</h2>
+
+    <div class="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border)] font-mono text-xs">
+      <div class="text-[10px] text-[var(--accent)] uppercase mb-4 tracking-wider font-semibold">PIPELINE FLOW GRAPH</div>
+      
+      <div class="space-y-3">
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">01. CLIENT REQUEST (PDF ≤ 5MB)</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">MULTIPART ENCTYPE</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">02. MULTER MEMORY BUFFER</span>
+          <span class="text-[var(--accent)] font-semibold">ZERO DISK I/O</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">03. PDF-PARSE BUFFER STREAM</span>
+          <span class="text-[var(--text-muted)]">RAW UTF-8 TEXT</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--accent)]/50 flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">04. REGEX MASKING & REDACTION ENGINE</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">PII TOKENS</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">05. SANITIZED PAYLOAD / AI API DISPATCH</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">SAFE FOR LLM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Sensitive Data Detection -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>04 / PATTERN MATCHING</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Sensitive Entity Detection</h2>
+    <p class="text-sm text-[var(--text-muted)] font-sans leading-relaxed">
+      The backend implements deterministic, boundary-checked regular expressions tailored for Indian and international identifiers:
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+      <div class="p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)]">
+        <div class="text-[10px] text-[var(--accent)] uppercase font-bold mb-1">PAN CARD PATTERN</div>
+        <div class="bg-[var(--surface-subtle)] p-2 rounded text-[var(--text-primary)] text-[11px] mb-2 font-mono">[A-Z]&#123;5&#125;[0-9]&#123;4&#125;[A-Z]&#123;1&#125;</div>
+        <div class="text-[10px] text-[var(--text-muted)] font-sans">Strict 10-digit alphanumeric format with 5 letters, 4 digits, 1 letter.</div>
+      </div>
+      <div class="p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)]">
+        <div class="text-[10px] text-[var(--accent)] uppercase font-bold mb-1">AADHAAR IDENTIFIER</div>
+        <div class="bg-[var(--surface-subtle)] p-2 rounded text-[var(--text-primary)] text-[11px] mb-2 font-mono">\d&#123;4&#125;\s?\d&#123;4&#125;\s?\d&#123;4&#125;</div>
+        <div class="text-[10px] text-[var(--text-muted)] font-sans">Matches 12-digit Indian national UID with optional spacing boundaries.</div>
+      </div>
+      <div class="p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)]">
+        <div class="text-[10px] text-[var(--accent)] uppercase font-bold mb-1">EMAIL ADDRESSES</div>
+        <div class="bg-[var(--surface-subtle)] p-2 rounded text-[var(--text-primary)] text-[11px] mb-2 font-mono">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]&#123;2,&#125;</div>
+        <div class="text-[10px] text-[var(--text-muted)] font-sans">Full RFC compliant email regex matching standard domain boundaries.</div>
+      </div>
+      <div class="p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)]">
+        <div class="text-[10px] text-[var(--accent)] uppercase font-bold mb-1">PHONE / CONTACT</div>
+        <div class="bg-[var(--surface-subtle)] p-2 rounded text-[var(--text-primary)] text-[11px] mb-2 font-mono">(?:\+91|0)?[6-9]\d&#123;9&#125;</div>
+        <div class="text-[10px] text-[var(--text-muted)] font-sans">Indian telecom numbering format with country code prefix options.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Security Approach -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>05 / DEFENSIVE SECURITY</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Security & Memory Architecture</h2>
+    <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-4 text-sm text-[var(--text-muted)] font-sans">
+      <div class="flex items-start gap-3">
+        <span class="text-[var(--accent)] font-mono text-base font-bold">↳</span>
+        <div>
+          <strong class="text-[var(--text-primary)]">Zero Disk Storage:</strong> Utilizes <code class="font-mono text-xs bg-[var(--surface-subtle)] px-1.5 py-0.5 rounded">multer.memoryStorage()</code> to stream files directly into RAM buffers. Once processing completes, garbage collection releases the memory without temporary file remnants.
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-[var(--accent)] font-mono text-base font-bold">↳</span>
+        <div>
+          <strong class="text-[var(--text-primary)]">Payload Restriction:</strong> Strict file size ceilings (5 MB maximum) and MIME-type validation to defend against Denial-of-Service (DoS) and decompression bombs.
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="text-[var(--accent)] font-mono text-base font-bold">↳</span>
+        <div>
+          <strong class="text-[var(--text-primary)]">Centralized Middleware:</strong> Standardized error interceptors return explicit HTTP status codes (400 for malformed PDFs, 413 for oversized payloads, 500 for parsing errors) without leaking stack traces.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Future Improvements -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>06 / ROADMAP</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Future Engineering Enhancements</h2>
+    <ul class="space-y-2 text-sm text-[var(--text-muted)] font-sans">
+      <li class="flex items-start gap-2">
+        <span class="text-[var(--accent)] font-mono font-semibold">01.</span>
+        <span>Asynchronous queue workers (e.g. BullMQ / Redis) for background batch processing of multi-page document bundles.</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-[var(--accent)] font-mono font-semibold">02.</span>
+        <span>Deep OCR integration (Tesseract.js) for scanned image documents and non-selectable PDFs.</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-[var(--accent)] font-mono font-semibold">03.</span>
+        <span>Downstream LLM summarization plugins with selectable redaction strictness profiles.</span>
+      </li>
+    </ul>
+  </section>
+</CaseStudyLayout>

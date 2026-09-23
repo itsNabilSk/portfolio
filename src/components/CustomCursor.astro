@@ -1,0 +1,78 @@
+---
+// Discreet, high-performance desktop custom cursor
+---
+
+<div id="custom-cursor" class="custom-cursor pointer-events-none fixed top-0 left-0 z-50 -translate-x-1/2 -translate-y-1/2 rounded-full border border-plum/60 bg-plum/10 transition-transform duration-150 ease-out hidden md:flex items-center justify-center text-[9px] font-mono font-medium tracking-widest text-plum uppercase" style="width: 24px; height: 24px; opacity: 0;">
+  <span id="cursor-label" class="opacity-0 transition-opacity duration-150"></span>
+</div>
+
+<script>
+  // Pure client JS cursor handler
+  const cursor = document.getElementById('custom-cursor');
+  const label = document.getElementById('cursor-label');
+
+  if (cursor && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    let isVisible = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isVisible) {
+        cursor.style.opacity = '1';
+        isVisible = true;
+      }
+    });
+
+    // Smooth lerp loop
+    const render = () => {
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(render);
+    };
+    requestAnimationFrame(render);
+
+    // Interactive elements hover
+    const addHoverListeners = () => {
+      const interactiveEls = document.querySelectorAll('a, button, [role="button"]');
+      interactiveEls.forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          const isProject = el.getAttribute('data-cursor') === 'project';
+          if (isProject) {
+            cursor.style.width = '64px';
+            cursor.style.height = '64px';
+            cursor.style.backgroundColor = 'rgba(114, 28, 80, 0.9)';
+            cursor.style.color = '#ffffff';
+            if (label) {
+              label.textContent = 'VIEW';
+              label.style.opacity = '1';
+            }
+          } else {
+            cursor.style.width = '36px';
+            cursor.style.height = '36px';
+            cursor.style.backgroundColor = 'rgba(114, 28, 80, 0.2)';
+            if (label) label.style.opacity = '0';
+          }
+        });
+
+        el.addEventListener('mouseleave', () => {
+          cursor.style.width = '24px';
+          cursor.style.height = '24px';
+          cursor.style.backgroundColor = 'rgba(114, 28, 80, 0.1)';
+          cursor.style.color = 'inherit';
+          if (label) {
+            label.style.opacity = '0';
+            label.textContent = '';
+          }
+        });
+      });
+    };
+
+    addHoverListeners();
+    document.addEventListener('astro:page-load', addHoverListeners);
+  }
+</script>

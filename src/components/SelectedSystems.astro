@@ -1,0 +1,370 @@
+---
+import { projects } from '../data/projects.js';
+---
+
+<section id="work" class="py-24 md:py-32 bg-theme hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[var(--border)] gap-6">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">02 / ARCHITECTURE & CODE</span>
+          <span class="text-[var(--border)]">/</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">SELECTED WORK</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-primary)] tracking-tight">
+          Selected Systems
+        </h2>
+      </div>
+      <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md font-sans leading-relaxed">
+        Software systems engineered from business logic and database architecture to production deployment.
+      </p>
+    </div>
+
+    <!-- Systems List: Product Engineering Layouts -->
+    <div class="flex flex-col gap-12 sm:gap-16 lg:gap-20">
+      
+      <!-- Project 01: SecureDoc AI (Hero Pipeline Architecture) -->
+      {projects.filter(p => p.id === 'securedoc-ai').map(p => (
+        <article class="group relative rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-md hover:border-[var(--accent)]/60 transition-all duration-300" data-cursor="project">
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-6 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 text-xs font-mono mb-4">
+                  <span class="px-2.5 py-0.5 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] font-semibold">
+                    SYSTEM {p.number}
+                  </span>
+                  <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
+                </div>
+
+                <h3 class="text-3xl sm:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
+                  {p.title}
+                </h3>
+
+                <p class="text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-4">
+                  {p.tagline}
+                </p>
+
+                <p class="text-sm text-[var(--text-muted)] font-sans leading-relaxed mb-6">
+                  {p.description}
+                </p>
+
+                <!-- Concrete Evidence Matrix: Claim -> Implementation -> Result -->
+                <div class="p-4 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border)] mb-6 font-mono text-xs space-y-2">
+                  <div class="text-[10px] text-[var(--accent)] font-bold uppercase tracking-wider pb-1 border-b border-[var(--border)]">
+                    ENGINEERING EVIDENCE PATTERN
+                  </div>
+                  <div class="text-[11px] text-[var(--text-primary)]">
+                    <span class="text-[var(--text-muted)]">CLAIM:</span> Zero residual disk exposure for confidential PDFs
+                  </div>
+                  <div class="text-[11px] text-[var(--text-primary)]">
+                    <span class="text-[var(--text-muted)]">ENGINEERING:</span> Multer memoryStorage RAM buffer streaming + pdf-parse
+                  </div>
+                  <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                    <span class="text-[var(--text-muted)]">RESULT:</span> Pre-LLM PII sanitization with zero temp file residue
+                  </div>
+                </div>
+
+                <!-- Technologies -->
+                <div class="flex flex-wrap gap-1.5 mb-8">
+                  {p.technologies.map(t => (
+                    <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Action Links -->
+              <div class="flex flex-wrap items-center gap-3.5 pt-4 border-t border-[var(--border)]">
+                <a
+                  href={p.caseStudyUrl}
+                  class="px-5 py-2.5 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2 font-semibold shadow-xs"
+                >
+                  <span>Read Case Study</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a
+                  href={p.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-2.5 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2"
+                >
+                  <span>GitHub Repo</span>
+                  <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Visual Architecture Diagram -->
+            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-5 sm:p-6 font-mono text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)] text-[10px] text-[var(--text-muted)]">
+                <span class="text-[var(--accent)] font-semibold uppercase">PIPELINE ARCHITECTURE</span>
+                <span>ZERO DISK RESIDUE</span>
+              </div>
+
+              <!-- Pipeline Step Flow -->
+              <div class="space-y-2.5">
+                {p.systemFlow.steps.map((step, sIdx) => (
+                  <div class="p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-start gap-3">
+                    <div class="w-5 h-5 rounded bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30 flex items-center justify-center font-mono font-bold text-[10px] shrink-0">
+                      0{sIdx + 1}
+                    </div>
+                    <div>
+                      <div class="text-[var(--text-primary)] font-semibold text-xs">{step.name}</div>
+                      <div class="text-[11px] text-[var(--text-muted)] mt-0.5">{step.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Redaction Matrix -->
+              <div class="mt-4 p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[10px]">
+                <div class="text-[var(--accent)] font-semibold uppercase mb-1.5 flex items-center justify-between">
+                  <span>DETECTED ENTITIES (REGEX MATRIX)</span>
+                  <span class="text-emerald-600 dark:text-emerald-400">MASK: ACTIVE</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-[var(--text-primary)]">
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
+                    PAN: <span class="text-[var(--accent)] font-semibold">[REDACTED_PAN]</span>
+                  </div>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
+                    Aadhaar: <span class="text-[var(--accent)] font-semibold">[REDACTED_UID]</span>
+                  </div>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
+                    Email: <span class="text-[var(--accent)] font-semibold">[REDACTED_EMAIL]</span>
+                  </div>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
+                    Phone: <span class="text-[var(--accent)] font-semibold">[REDACTED_PHONE]</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+
+      <!-- Project 02: Hospital Management System (RBAC & Transaction Flow) -->
+      {projects.filter(p => p.id === 'hospital-management').map(p => (
+        <article class="group relative rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-md hover:border-[var(--accent)]/60 transition-all duration-300" data-cursor="project">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-6 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 text-xs font-mono mb-4">
+                  <span class="px-2.5 py-0.5 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] font-semibold">
+                    SYSTEM {p.number}
+                  </span>
+                  <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
+                </div>
+
+                <h3 class="text-3xl sm:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
+                  {p.title}
+                </h3>
+
+                <p class="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider mb-4">
+                  {p.tagline}
+                </p>
+
+                <p class="text-sm text-[var(--text-muted)] font-sans leading-relaxed mb-6">
+                  {p.description}
+                </p>
+
+                <!-- Concrete Evidence Matrix -->
+                <div class="p-4 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border)] mb-6 font-mono text-xs space-y-2">
+                  <div class="text-[10px] text-[var(--accent)] font-bold uppercase tracking-wider pb-1 border-b border-[var(--border)]">
+                    ENGINEERING EVIDENCE PATTERN
+                  </div>
+                  <div class="text-[11px] text-[var(--text-primary)]">
+                    <span class="text-[var(--text-muted)]">CLAIM:</span> Role-based security & zero double-booked appointments
+                  </div>
+                  <div class="text-[11px] text-[var(--text-primary)]">
+                    <span class="text-[var(--text-muted)]">ENGINEERING:</span> JWT Auth middleware + Doctor availability query gate
+                  </div>
+                  <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                    <span class="text-[var(--text-muted)]">RESULT:</span> 12+ REST endpoints & automated Nodemailer confirmation receipts
+                  </div>
+                </div>
+
+                <!-- Technologies -->
+                <div class="flex flex-wrap gap-1.5 mb-8">
+                  {p.technologies.map(t => (
+                    <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Action Links -->
+              <div class="flex flex-wrap items-center gap-3.5 pt-4 border-t border-[var(--border)]">
+                <a
+                  href={p.caseStudyUrl}
+                  class="px-5 py-2.5 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2 font-semibold shadow-xs"
+                >
+                  <span>Read Case Study</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a
+                  href={p.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-2.5 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2"
+                >
+                  <span>GitHub Repo</span>
+                  <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right RBAC & Scheduling Flow Visualization -->
+            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-5 sm:p-6 font-mono text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)] text-[10px] text-[var(--text-muted)]">
+                <span class="text-[var(--text-primary)] font-semibold uppercase">RBAC & TRANSACTION FLOW</span>
+                <span class="text-[var(--accent)] font-semibold">12+ REST ENDPOINTS</span>
+              </div>
+
+              <!-- RBAC Roles -->
+              <div class="grid grid-cols-3 gap-2 mb-4">
+                <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[9px] text-[var(--text-muted)] uppercase">ROLE 01</div>
+                  <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">ADMIN</div>
+                  <div class="text-[9px] text-[var(--accent)] mt-0.5">System Scope</div>
+                </div>
+                <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[9px] text-[var(--text-muted)] uppercase">ROLE 02</div>
+                  <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">DOCTOR</div>
+                  <div class="text-[9px] text-[var(--accent)] mt-0.5">Shifts & Slots</div>
+                </div>
+                <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[9px] text-[var(--text-muted)] uppercase">ROLE 03</div>
+                  <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">PATIENT</div>
+                  <div class="text-[9px] text-[var(--accent)] mt-0.5">Reservations</div>
+                </div>
+              </div>
+
+              <!-- Steps Flow -->
+              <div class="space-y-2">
+                {p.systemFlow.steps.map((step, sIdx) => (
+                  <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] flex items-start gap-2.5 text-xs">
+                    <span class="text-[var(--accent)] font-bold font-mono">0{sIdx + 1}</span>
+                    <div>
+                      <div class="font-semibold text-[var(--text-primary)]">{step.name}</div>
+                      <div class="text-[11px] text-[var(--text-muted)]">{step.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+
+      <!-- Two-Column Grid for Secondary Projects: Weather Jankar & JS Practice -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Project 03: Weather Jankar -->
+        {projects.filter(p => p.id === 'weather-jankar').map(p => (
+          <article class="p-6 sm:p-8 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 transition-all duration-200 flex flex-col justify-between shadow-xs" data-cursor="project">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] mb-4">
+                <span class="px-2 py-0.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] font-semibold">
+                  SYSTEM {p.number}
+                </span>
+                <span class="text-[var(--accent)] font-semibold">{p.categoryBadge}</span>
+              </div>
+
+              <h3 class="text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-2 group-hover:text-[var(--accent)] transition-colors">
+                {p.title}
+              </h3>
+              
+              <p class="text-xs font-mono text-[var(--text-muted)] mb-4">{p.tagline}</p>
+
+              <p class="text-xs text-[var(--text-muted)] leading-relaxed font-sans mb-6">
+                {p.description}
+              </p>
+
+              <!-- Mini Pipeline flow -->
+              <div class="p-3 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] font-mono text-[11px] space-y-1.5 mb-6">
+                <div class="text-[10px] text-[var(--accent)] uppercase font-semibold">API RESILIENCY PIPELINE</div>
+                <div class="text-[var(--text-primary)]">Query Sanitizer → Async Fetch → Error Boundary → DOM Render</div>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                {p.technologies.map(t => (
+                  <span class="px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[10px] font-mono text-[var(--text-muted)] border border-[var(--border)]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 pt-4 border-t border-[var(--border)] text-xs font-mono">
+              <a href={p.caseStudyUrl} class="text-[var(--text-primary)] hover:text-[var(--accent)] font-semibold flex items-center gap-1">
+                <span>Case Study</span> <span>→</span>
+              </a>
+              <span class="text-[var(--border)]">|</span>
+              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center gap-1">
+                <span>GitHub</span> <span>↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+
+        <!-- Project 04: JS Practice Repository -->
+        {projects.filter(p => p.id === 'javascript-practice').map(p => (
+          <article class="p-6 sm:p-8 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 transition-all duration-200 flex flex-col justify-between shadow-xs" data-cursor="project">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] mb-4">
+                <span class="px-2 py-0.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] font-semibold">FOUNDATIONS</span>
+                <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
+              </div>
+
+              <h3 class="text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-2">
+                {p.title}
+              </h3>
+              
+              <p class="text-xs font-mono text-[var(--text-muted)] mb-4">{p.tagline}</p>
+
+              <p class="text-xs text-[var(--text-muted)] leading-relaxed font-sans mb-6">
+                {p.description}
+              </p>
+
+              <!-- Honest positioning badge -->
+              <div class="p-3 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] font-mono text-[11px] mb-6">
+                <div class="text-[10px] text-[var(--accent)] uppercase font-semibold">PRACTICE & MASTERY LOG</div>
+                <p class="text-xs text-[var(--text-primary)] font-sans mt-1">
+                  Active exploration of prototypes, asynchronous event queues, microtasks, and DOM primitives.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                {p.technologies.map(t => (
+                  <span class="px-2 py-0.5 rounded bg-[var(--surface-subtle)] text-[10px] font-mono text-[var(--text-muted)] border border-[var(--border)]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-4 border-t border-[var(--border)] text-xs font-mono">
+              <span class="text-[11px] text-[var(--text-muted)]">Continuous Learning</span>
+              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-primary)] hover:text-[var(--accent)] font-semibold flex items-center gap-1">
+                <span>Explore Repo</span> <span>↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

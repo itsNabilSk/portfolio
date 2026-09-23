@@ -1,0 +1,80 @@
+---
+import { experiences } from '../data/experience.js';
+---
+
+<section id="experience" class="py-24 md:py-32 bg-theme hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[var(--border)] gap-6">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">03 / TRACK RECORD</span>
+          <span class="text-[var(--border)]">/</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">EMPLOYMENT</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-primary)] tracking-tight">
+          Professional Experience
+        </h2>
+      </div>
+      <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md font-sans leading-relaxed">
+        Commercial engineering experience delivering live production software features across client deployments.
+      </p>
+    </div>
+
+    <!-- Editorial Experience Timeline -->
+    <div class="space-y-12">
+      {experiences.map((exp) => (
+        <div class="p-8 sm:p-10 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 transition-all duration-300 shadow-xs">
+          
+          <!-- Top Row: Role, Company, Period & Badge -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30 text-xs font-mono font-medium">
+                  {exp.type}
+                </span>
+                <span class="text-xs font-mono text-[var(--text-muted)]">{exp.location}</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">
+                {exp.role} <span class="text-[var(--accent)] font-normal">@ {exp.company}</span>
+              </h3>
+            </div>
+            
+            <div class="flex items-center gap-3 font-mono text-xs">
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-[var(--text-primary)] font-semibold">{exp.period}</span>
+            </div>
+          </div>
+
+          <!-- Overview description -->
+          <p class="text-sm sm:text-base text-[var(--text-muted)] font-sans leading-relaxed my-6">
+            {exp.description}
+          </p>
+
+          <!-- Verified Deliverables Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+            {exp.deliverables.map((del) => (
+              <div class="p-4 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] flex items-start gap-3">
+                <span class="text-[var(--accent)] font-mono text-sm font-bold shrink-0">↳</span>
+                <span class="text-xs sm:text-sm text-[var(--text-primary)] font-sans leading-snug">{del}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Tech Stack Pill list -->
+          <div class="pt-6 border-t border-[var(--border)] flex flex-wrap items-center gap-2">
+            <span class="text-[11px] font-mono uppercase text-[var(--text-muted)] tracking-wider mr-2">TECH STACK:</span>
+            {exp.technologies.map((t) => (
+              <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] text-xs font-mono text-[var(--text-primary)] border border-[var(--border)]">
+                {t}
+              </span>
+            ))}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

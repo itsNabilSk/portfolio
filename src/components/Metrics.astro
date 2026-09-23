@@ -1,0 +1,49 @@
+---
+import { engineeringMetrics } from '../data/metrics.js';
+---
+
+<section class="py-16 md:py-20 bg-theme hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Eyebrow -->
+    <div class="flex items-center justify-between mb-8 pb-4 border-b border-[var(--border)]">
+      <div class="flex items-center gap-2">
+        <span class="text-[11px] font-mono uppercase text-[var(--text-muted)] tracking-widest">01 / PROVEN DELIVERY</span>
+        <span class="text-[var(--border)]">·</span>
+        <span class="text-[11px] font-mono text-[var(--accent)] uppercase font-semibold">VERIFIED METRICS</span>
+      </div>
+      <div class="text-[11px] font-mono text-[var(--text-muted)] hidden sm:block">
+        SOURCE: PRODUCTION DEPLOYMENTS & RESUME
+      </div>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {engineeringMetrics.map((m, idx) => (
+        <div class="group relative p-6 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-xs transition-all duration-200 flex flex-col justify-between">
+          
+          <div>
+            <div class="flex items-center justify-between text-[var(--text-muted)] text-[10px] font-mono tracking-widest uppercase mb-4">
+              <span>METRIC · 0{idx + 1}</span>
+              <span class="text-[var(--accent)] font-semibold">{m.context}</span>
+            </div>
+            
+            <div class="text-4xl lg:text-5xl font-serif text-[var(--text-primary)] tracking-tight group-hover:text-[var(--accent)] transition-colors mb-2 font-normal">
+              {m.number}
+            </div>
+
+            <div class="text-xs font-semibold tracking-wider text-[var(--text-primary)] uppercase mb-3 font-mono">
+              {m.label}
+            </div>
+          </div>
+
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed font-sans mt-2 pt-3 border-t border-[var(--border)]">
+            {m.description}
+          </p>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

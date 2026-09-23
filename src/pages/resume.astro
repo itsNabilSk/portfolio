@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { experiences } from '../data/experience.js';
+import { educationList, certificationsList } from '../data/education.js';
+import { skillGroups } from '../data/skills.js';
+---
+
+<Layout
+  title="Resume & Qualifications | Nabil Shaikh"
+  description="Full Stack Software Developer resume and credentials for Mohammed Nabil Shaikh — MERN Stack, Backend APIs, Docker, and SaaS Architecture."
+>
+  <section class="pt-32 pb-20 md:pt-40 md:pb-28 bg-theme hairline-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Action Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border)] mb-10">
+        <div>
+          <div class="text-xs font-mono uppercase text-[var(--accent)] font-semibold mb-1">CURRICULUM VITAE</div>
+          <h1 class="text-3xl sm:text-4xl font-serif text-[var(--text-primary)]">Mohammed Nabil Shaikh</h1>
+          <p class="text-xs font-mono text-[var(--text-muted)] mt-1">Full Stack Software Developer · Mumbai, India</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button
+            onclick="window.print()"
+            class="px-4 py-2 rounded-md bg-[var(--surface-subtle)] border border-[var(--border)] text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent)] transition-colors cursor-pointer flex items-center gap-1.5"
+          >
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+            <span>Print Resume</span>
+          </button>
+          
+          <a
+            href="mailto:mohammednabilshaikhwork@gmail.com"
+            class="px-4 py-2 rounded-md bg-[var(--accent)] text-white text-xs font-mono font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+
+      <!-- Resume Content Sheet -->
+      <div class="space-y-12 font-sans">
+        
+        <!-- Summary -->
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold pb-2 border-b border-[var(--border)] mb-4">
+            Professional Summary
+          </h2>
+          <p class="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+            Final-year Electronics and Telecommunication Engineering student with hands-on experience as a Full Stack Developer Intern, delivering production-ready web applications using the MERN stack. Experienced across 20+ RESTful APIs, JWT authentication, centralized validation, AI-assisted document processing workflows, scalable backend services, MongoDB, Docker, and modern software engineering practices.
+          </p>
+        </div>
+
+        <!-- Experience -->
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold pb-2 border-b border-[var(--border)] mb-4">
+            Professional Experience
+          </h2>
+          {experiences.map((exp) => (
+            <div class="space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <div>
+                  <h3 class="text-lg font-serif text-[var(--text-primary)]">{exp.role}</h3>
+                  <div class="text-xs font-mono text-[var(--accent)] font-semibold">{exp.company} · {exp.location}</div>
+                </div>
+                <div class="text-xs font-mono text-[var(--text-muted)]">{exp.period}</div>
+              </div>
+
+              <ul class="space-y-2 list-disc list-inside text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                {exp.deliverables.map((d) => (
+                  <li>{d}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <!-- Education -->
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold pb-2 border-b border-[var(--border)] mb-4">
+            Education
+          </h2>
+          <div class="space-y-6">
+            {educationList.map((edu) => (
+              <div class="space-y-1">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                  <h3 class="text-base font-serif text-[var(--text-primary)]">{edu.institution}</h3>
+                  <span class="text-xs font-mono text-[var(--text-muted)]">{edu.period}</span>
+                </div>
+                <div class="text-xs font-mono text-[var(--text-muted)]">
+                  {edu.degree} in {edu.field} — <span class="text-[var(--accent)] font-semibold">{edu.scoreLabel}: {edu.scoreValue}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold pb-2 border-b border-[var(--border)] mb-4">
+            Technical Competencies
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {skillGroups.map((g) => (
+              <div class="p-4 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)]">
+                <div class="text-xs font-mono font-bold text-[var(--text-primary)] mb-2 uppercase">{g.category}</div>
+                <div class="flex flex-wrap gap-1.5">
+                  {g.skills.map((s) => (
+                    <span class="px-2 py-0.5 rounded bg-[var(--surface)] text-[11px] font-mono text-[var(--text-muted)] border border-[var(--border)]">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-bold pb-2 border-b border-[var(--border)] mb-4">
+            Certifications
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {certificationsList.map((c) => (
+              <div class="p-4 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)]">
+                <div class="text-[10px] font-mono text-[var(--accent)] uppercase">{c.year}</div>
+                <div class="text-xs font-bold text-[var(--text-primary)] font-serif mt-0.5">{c.title}</div>
+                <div class="text-[11px] font-mono text-[var(--text-muted)]">{c.issuer}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>

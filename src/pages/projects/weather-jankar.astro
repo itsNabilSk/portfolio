@@ -1,0 +1,109 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { projects } from '../../data/projects.js';
+
+const project = projects.find((p) => p.id === 'weather-jankar');
+---
+
+<CaseStudyLayout
+  title={project.title}
+  subtitle="Lightweight real-time weather application engineered with resilient asynchronous API fetching, client-side validation, and defensive error boundaries."
+  category={project.categoryBadge}
+  number={project.number}
+  repoUrl={project.repoUrl}
+  technologies={project.technologies}
+  description={project.description}
+>
+  <!-- 01 Overview -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>01 / CONTEXT & GOAL</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Overview</h2>
+    <p class="text-base text-[var(--text-muted)] font-sans leading-relaxed">
+      <strong>Weather Jankar</strong> is a focused, fast client-side web application built with vanilla web standards (HTML5, CSS3, ES6+ JavaScript) that interfaces with live RESTful weather APIs to provide instantaneous atmospheric metrics across global cities.
+    </p>
+    <p class="text-base text-[var(--text-muted)] font-sans leading-relaxed">
+      The project demonstrates clean asynchronous HTTP request handling, input sanitization, dynamic DOM manipulation, and defensive error boundary handling.
+    </p>
+  </section>
+
+  <!-- 02 Problem & API Resiliency -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>02 / TECHNICAL CHALLENGE</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">API Edge-Cases & Error Boundaries</h2>
+    <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-3 text-sm text-[var(--text-muted)] font-sans">
+      <p>
+        Consuming third-party external APIs on the client requires rigorous defense against network anomalies and unpredictable responses:
+      </p>
+      <ul class="space-y-2 list-disc list-inside text-xs sm:text-sm text-[var(--text-primary)]">
+        <li><strong>Invalid / Misspelled City Queries:</strong> Returning graceful 404 feedback without throwing unhandled promise rejections.</li>
+        <li><strong>API Rate Limits (429):</strong> Providing descriptive user notifications when external quota thresholds are reached.</li>
+        <li><strong>Offline / Dropped Connections:</strong> Detecting lack of connectivity and presenting cached fallback states.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 Architecture Diagram -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>03 / PIPELINE FLOW</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Client-Side Request Lifecycle</h2>
+
+    <div class="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border)] font-mono text-xs">
+      <div class="text-[10px] text-[var(--accent)] uppercase mb-4 tracking-wider font-semibold">ASYNC FETCH & RENDER PIPELINE</div>
+      
+      <div class="space-y-3">
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">USER INPUT (City Search Bar)</span>
+          <span class="text-[var(--accent)] font-semibold">INPUT EVENT</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">QUERY SANITIZATION & TRIM REGEX</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">CLEAN STRING</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--accent)]/50 flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">ASYNC FETCH() TO WEATHER REST API</span>
+          <span class="text-[var(--text-primary)] font-semibold">HTTP GET</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">STATUS CODE GUARD (200 OK vs 404 / 429 / 500)</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">HANDLED BOUNDARY</span>
+        </div>
+        <div class="text-center text-[var(--text-muted)] text-xs">↓</div>
+        <div class="p-3.5 rounded bg-[var(--surface-subtle)] border border-[var(--border)] flex items-center justify-between">
+          <span class="text-[var(--text-primary)] font-semibold">DYNAMIC DOM MUTATION & ICON CODE MAP</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">FAST RENDER</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Tech Stack & Key Takeaways -->
+  <section class="space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase text-[var(--accent)] font-semibold">
+      <span>04 / ENGINEERING FOUNDATIONS</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight">Key Architectural Principles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+      <div class="p-5 rounded-xl bg-[var(--surface)] border border-[var(--border)]">
+        <div class="text-[10px] text-[var(--accent)] uppercase font-bold mb-1">ZERO RUNTIME BLOAT</div>
+        <p class="text-xs text-[var(--text-muted)] font-sans leading-relaxed mt-2">
+          Engineered purely with standard DOM primitives and modern ES6+, eliminating multi-megabyte bundle dependencies for instant execution.
+        </p>
+      </div>
+      <div class="p-5 rounded-xl bg-[var(--surface)] border border-[var(--border)]">
+        <div class="text-[10px] text-[var(--accent)] uppercase font-bold mb-1">ACCESSIBLE SEMANTICS</div>
+        <p class="text-xs text-[var(--text-muted)] font-sans leading-relaxed mt-2">
+          Structured with proper form landmarks, ARIA-live regions for dynamic forecast updates, and keyboard-navigable search controls.
+        </p>
+      </div>
+    </div>
+  </section>
+</CaseStudyLayout>

@@ -1,0 +1,86 @@
+---
+// Engineering for Search and Web Performance
+const seoPillars = [
+  {
+    title: "Semantic HTML Architecture",
+    code: "<main> <article> <header> <nav>",
+    desc: "Clean DOM hierarchy, proper H1-H6 outline, and native semantic landmarks for search crawlers and screen readers.",
+  },
+  {
+    title: "Structured Data (JSON-LD)",
+    code: "schema.org/Person & WebSite",
+    desc: "Explicit machine-readable context providing Google and bots with verified biographical and technical metadata.",
+  },
+  {
+    title: "Core Web Vitals Engineering",
+    code: "LCP < 1.2s · CLS = 0.0 · INP < 50ms",
+    desc: "Zero layout shifts, sub-millisecond interaction responsiveness, and minimal client execution overhead.",
+  },
+  {
+    title: "Robots & Sitemap Generation",
+    code: "robots.txt · sitemap.xml",
+    desc: "Dynamic indexing rules, canonical tags preventing duplicate content, and optimal crawl budget efficiency.",
+  },
+];
+---
+
+<section class="py-24 md:py-32 bg-theme hairline-b relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg-pattern opacity-40 pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="max-w-3xl mb-16 pb-6 border-b border-[var(--border)]">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">10 / PERFORMANCE & CRAWLABILITY</span>
+        <span class="text-[var(--border)]">/</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">TECHNICAL SEO</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-primary)] tracking-tight mb-4">
+        Engineering for Search & Speed
+      </h2>
+      <p class="text-sm sm:text-base text-[var(--text-muted)] font-sans leading-relaxed">
+        Technical SEO is not about stuffing keywords — it is an engineering discipline encompassing semantic DOM structure, structured JSON-LD schemas, instant TTFB, and Core Web Vitals.
+      </p>
+    </div>
+
+    <!-- SEO & Performance Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {seoPillars.map((p, idx) => (
+        <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex flex-col justify-between hover:border-[var(--accent)] transition-colors shadow-xs">
+          <div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] uppercase mb-2">
+              PILLAR 0{idx + 1}
+            </div>
+
+            <h3 class="text-lg font-serif text-[var(--text-primary)] font-normal mb-2">
+              {p.title}
+            </h3>
+
+            <div class="text-[10px] font-mono text-[var(--accent)] bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] mb-4 font-semibold">
+              {p.code}
+            </div>
+
+            <p class="text-xs text-[var(--text-muted)] font-sans leading-relaxed">
+              {p.desc}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-3 border-t border-[var(--border)] text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
+            STATUS: OPTIMIZED
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Metric Banner -->
+    <div class="mt-12 p-6 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-[var(--text-primary)] font-semibold">LIGHTHOUSE AUDIT: 92%+ PERFORMANCE & TECHNICAL SEO ACROSS PRODUCTION WORK</span>
+      </div>
+      <span class="text-[var(--accent)] font-semibold">ASTRO STATIC RENDERING</span>
+    </div>
+
+  </div>
+</section>

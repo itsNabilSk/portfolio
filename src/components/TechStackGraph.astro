@@ -1,0 +1,79 @@
+---
+import { skillGroups } from '../data/skills.js';
+---
+
+<section id="skills" class="py-24 md:py-32 bg-theme hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[var(--border)] gap-6">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">07 / DOMAIN MASTERY</span>
+          <span class="text-[var(--border)]">/</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">TECH STACK</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-primary)] tracking-tight">
+          Architecture-Based Skills
+        </h2>
+      </div>
+      <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md font-sans leading-relaxed">
+        Categorized by architectural responsibility rather than arbitrary percentage meters.
+      </p>
+    </div>
+
+    <!-- Skill Groups Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {skillGroups.map((group, idx) => (
+        <div class="p-6 sm:p-8 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-xs transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] mb-4 pb-2 border-b border-[var(--border)]">
+              <span class="text-[var(--accent)] font-bold font-mono">0{idx + 1}</span>
+              <span class="text-[10px] uppercase tracking-wider">{group.badge}</span>
+            </div>
+
+            <h3 class="text-xl font-serif text-[var(--text-primary)] tracking-tight mb-2">
+              {group.category}
+            </h3>
+
+            <p class="text-xs text-[var(--text-muted)] font-sans leading-relaxed mb-6">
+              {group.description}
+            </p>
+
+            <!-- Skill Tags -->
+            <div class="flex flex-wrap gap-1.5">
+              {group.skills.map((skill) => (
+                <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent)] transition-colors">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[var(--border)] flex items-center justify-between text-[10px] font-mono text-[var(--text-muted)]">
+            <span>VERIFIED CAPABILITY</span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">● ACTIVE</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Network System Connected Visual -->
+    <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-[var(--surface-subtle)] border border-[var(--border)] font-mono text-xs">
+      <div class="flex items-center justify-between pb-4 mb-6 border-b border-[var(--border)]">
+        <span class="text-[var(--accent)] font-semibold uppercase tracking-wider text-[11px]">CENTRALIZED SYSTEM INTERCONNECT</span>
+        <span class="text-[var(--text-muted)] text-[10px]">PARADIGM: END-TO-END</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
+        {["FRONTEND (React)", "GATEWAY (Express)", "BUSINESS LOGIC", "PERSISTENCE (Mongo)", "AI PIPELINES", "SEO / PERF"].map((node, i) => (
+          <div class="p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex flex-col justify-center items-center gap-1 hover:border-[var(--accent)] transition-colors">
+            <span class="text-[9px] text-[var(--accent)] font-semibold">NODE 0{i + 1}</span>
+            <span class="text-[var(--text-primary)] font-semibold text-[11px] font-mono">{node}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

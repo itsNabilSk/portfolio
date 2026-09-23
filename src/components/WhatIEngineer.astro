@@ -1,0 +1,65 @@
+---
+import { servicesList } from '../data/services.js';
+---
+
+<section class="py-24 md:py-32 bg-theme hairline-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[var(--border)] gap-6">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">05 / CAPABILITIES</span>
+          <span class="text-[var(--border)]">/</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">ENGINEERING DOMAIN</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[var(--text-primary)] tracking-tight">
+          What I Engineer
+        </h2>
+      </div>
+      <p class="text-sm sm:text-base text-[var(--text-muted)] max-w-md font-sans leading-relaxed">
+        Disciplined software engineering across the entire stack — focusing on scalable backends, resilient logic, and search-optimized frontends.
+      </p>
+    </div>
+
+    <!-- 6 Capabilities Grid: Scannable 3-part layout (Build + Approach + Deliver) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {servicesList.map((service) => (
+        <div class="group relative p-6 sm:p-8 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-xs transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] mb-4 pb-2 border-b border-[var(--border)]">
+              <span class="text-[var(--accent)] font-bold font-mono">0{service.number}</span>
+              <span class="uppercase tracking-widest text-[10px]">ENGINEERING DOMAIN</span>
+            </div>
+
+            <h3 class="text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
+              {service.title}
+            </h3>
+
+            <!-- What I Build -->
+            <p class="text-xs sm:text-sm text-[var(--text-muted)] font-sans leading-relaxed mb-5">
+              {service.description}
+            </p>
+
+            <!-- How I Approach It -->
+            <div class="space-y-1.5 mb-6">
+              <div class="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mb-2">HOW I APPROACH IT:</div>
+              {service.capabilities.map((cap) => (
+                <div class="flex items-start gap-2 text-xs text-[var(--text-primary)] font-sans">
+                  <span class="text-[var(--accent)] font-mono text-xs font-bold shrink-0">↳</span>
+                  <span>{cap}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- What I Deliver -->
+          <div class="pt-4 border-t border-[var(--border)] text-[11px] font-mono text-[var(--text-muted)]">
+            <span class="text-[var(--text-primary)] font-semibold">DELIVERABLE:</span> {service.deliverables}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,88 @@
+---
+import HeroVisual from './HeroVisual.astro';
+import AntigravityBackground from './AntigravityBackground.astro';
+---
+
+<section id="hero-section" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden hairline-b bg-theme">
+  <!-- Interactive Canvas Background (Strictly scoped to Hero) -->
+  <AntigravityBackground />
+
+  <!-- Soft Bottom Blend Overlay (Seamless transition into next section) -->
+  <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[var(--bg)] to-transparent pointer-events-none z-10"></div>
+
+  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Column: Editorial Headline & Copy -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        
+        <!-- Eyebrow with location & title -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono uppercase tracking-widest text-[var(--text-muted)] mb-6 w-fit">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse"></span>
+          <span>MUMBAI · INDIA</span>
+          <span class="text-[var(--border)]">|</span>
+          <span class="text-[var(--text-primary)] font-semibold">SOFTWARE ENGINEER</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-primary)] tracking-tight leading-[1.1] mb-6 font-normal">
+          Building software <br class="hidden sm:inline" />
+          that works <span class="italic text-[var(--accent)] font-normal font-serif">beyond</span> <br class="hidden sm:inline" />
+          the interface.
+        </h1>
+
+        <!-- Personal Introduction -->
+        <p class="text-base sm:text-lg text-[var(--text-primary)] font-sans font-normal max-w-2xl leading-relaxed mb-3">
+          I'm <strong class="font-medium text-[var(--text-primary)]">Mohammed Nabil Shaikh</strong>, a Software Engineer focused on building production-ready web applications, SaaS products, backend systems, and business-driven digital solutions.
+        </p>
+
+        <!-- Real-World Experience / Market Credibility -->
+        <p class="text-sm sm:text-base text-[var(--text-muted)] font-sans font-normal max-w-2xl leading-relaxed mb-6">
+          Hands-on experience working on real-world products and client projects across India and international markets, including Gulf, US, and UK clients.
+        </p>
+
+        <!-- Technical Focus Tags -->
+        <div class="flex flex-wrap items-center gap-2 mb-8">
+          {["Full Stack", "SaaS", "Backend", "Business Logic", "AI Workflows", "Technical SEO"].map((tag) => (
+            <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)] tracking-wide">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-3.5 mb-2">
+          <a
+            href="#work"
+            class="px-6 py-3.5 rounded-md bg-[var(--accent)] text-white hover:opacity-90 transition-all duration-200 font-mono text-xs tracking-wider uppercase flex items-center gap-2 shadow-xs font-semibold"
+          >
+            <span>View Selected Systems</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          
+          <a
+            href="/resume"
+            class="px-5 py-3.5 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] transition-all duration-200 font-mono text-xs tracking-wider uppercase flex items-center gap-1.5"
+          >
+            <span>Resume</span>
+            <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </a>
+
+          <a
+            href="/contact"
+            class="px-5 py-3.5 rounded-md text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all duration-200 font-mono text-xs tracking-wider uppercase"
+          >
+            Let's Build Something →
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Engineering System Visualization -->
+      <div class="lg:col-span-5">
+        <HeroVisual />
+      </div>
+
+    </div>
+  </div>
+</section>

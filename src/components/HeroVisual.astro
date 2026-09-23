@@ -1,0 +1,125 @@
+---
+// Abstract technical system architecture visualization for hero section
+---
+
+<div class="relative w-full max-w-lg lg:max-w-none mx-auto bg-[var(--surface)] text-[var(--text-primary)] rounded-xl border border-[var(--border)] shadow-xl p-5 sm:p-7 overflow-hidden font-mono text-xs">
+  
+  <!-- Subtle decorative technical background grid -->
+  <div class="absolute inset-0 grid-bg-pattern opacity-40 pointer-events-none"></div>
+
+  <!-- Header Bar / Status Indicator -->
+  <div class="relative z-10 flex items-center justify-between pb-4 border-b border-[var(--border)]">
+    <div class="flex items-center gap-2">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span class="text-[11px] tracking-wider uppercase text-emerald-600 dark:text-emerald-400 font-semibold">SYSTEM STATE: ACTIVE</span>
+    </div>
+    <div class="text-[10px] text-[var(--text-muted)]">
+      RUNTIME: <span class="text-[var(--text-primary)] font-mono font-semibold">NODE.JS 20 LTS</span>
+    </div>
+  </div>
+
+  <!-- System Architecture Flow Visualization -->
+  <div class="relative z-10 py-5 flex flex-col gap-3 sm:gap-4">
+    
+    <!-- Level 1: Client / Interface -->
+    <div class="group relative flex items-center justify-between p-3 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+        </div>
+        <div>
+          <div class="text-[var(--text-primary)] font-semibold text-[11px] sm:text-xs">01 / CLIENT & REACT INTERFACE</div>
+          <div class="text-[10px] text-[var(--text-muted)]">State Sync · Semantic DOM · Accessible Components</div>
+        </div>
+      </div>
+      <div class="text-[9px] sm:text-[10px] text-[var(--accent)] border border-[var(--accent)]/30 px-1.5 py-0.5 rounded font-semibold shrink-0">
+        92%+ LIGHTHOUSE
+      </div>
+    </div>
+
+    <!-- Direction Connector -->
+    <div class="flex items-center justify-center">
+      <div class="h-3 w-px bg-[var(--border)]"></div>
+    </div>
+
+    <!-- Level 2: API Gateway & Auth Guard -->
+    <div class="group relative flex items-center justify-between p-3 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <div class="text-[var(--text-primary)] font-semibold text-[11px] sm:text-xs">02 / REST API & JWT AUTH GUARD</div>
+          <div class="text-[10px] text-[var(--text-muted)]">20+ Endpoints · Reusable Middleware · Validation</div>
+        </div>
+      </div>
+      <div class="text-[9px] sm:text-[10px] text-emerald-600 dark:text-emerald-400 font-mono font-semibold shrink-0">
+        TOKEN: OK
+      </div>
+    </div>
+
+    <!-- Direction Connector -->
+    <div class="flex items-center justify-center">
+      <div class="h-3 w-px bg-[var(--border)]"></div>
+    </div>
+
+    <!-- Level 3: Core Business Logic Layer -->
+    <div class="relative p-3.5 sm:p-4 rounded-lg bg-[var(--surface-subtle)] border border-[var(--accent)]/50 transition-all duration-200">
+      <div class="flex items-center justify-between mb-1.5">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span>
+          <span class="text-[var(--text-primary)] font-bold text-xs">03 / BUSINESS LOGIC ENGINE</span>
+        </div>
+        <span class="text-[10px] text-[var(--accent)] font-mono font-semibold">DOMAIN RULES</span>
+      </div>
+      <p class="text-[11px] text-[var(--text-muted)] font-sans leading-relaxed">
+        Deterministic validation, RBAC gatekeeping, collision prevention & in-memory parsing.
+      </p>
+
+      <!-- Two Downstream Branches: Database & AI Engine -->
+      <div class="grid grid-cols-2 gap-2.5 mt-3 pt-2.5 border-t border-[var(--border)]">
+        <!-- DB Node -->
+        <div class="p-2 rounded bg-[var(--surface)] border border-[var(--border)]">
+          <div class="text-[9px] text-[var(--text-muted)] uppercase font-semibold">STORAGE LAYER</div>
+          <div class="text-[11px] font-semibold text-[var(--text-primary)] mt-0.5">MongoDB / SQL</div>
+          <div class="text-[9px] text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">ATOMIC WRITES</div>
+        </div>
+        <!-- AI Node -->
+        <div class="p-2 rounded bg-[var(--surface)] border border-[var(--border)]">
+          <div class="text-[9px] text-[var(--text-muted)] uppercase font-semibold">INTELLIGENCE</div>
+          <div class="text-[11px] font-semibold text-[var(--text-primary)] mt-0.5">Pre-LLM Redaction</div>
+          <div class="text-[9px] text-[var(--accent)] font-mono mt-0.5 font-semibold">ZERO DISK RESIDUE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direction Connector -->
+    <div class="flex items-center justify-center">
+      <div class="h-3 w-px bg-[var(--border)]"></div>
+    </div>
+
+    <!-- Level 4: Production Deployment -->
+    <div class="group relative flex items-center justify-between p-3 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-200">
+      <div class="flex items-center gap-2.5">
+        <div class="w-6 h-6 rounded bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)]">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div>
+          <div class="text-[var(--text-primary)] font-semibold text-[11px] sm:text-xs">04 / PRODUCTION ENVIRONMENT</div>
+          <div class="text-[10px] text-[var(--text-muted)]">Docker · CI/CD Pipelines · SDLC Maintenance</div>
+        </div>
+      </div>
+      <div class="text-[9px] sm:text-[10px] text-[var(--text-muted)] font-mono shrink-0">
+        10+ PRODS
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Stats Bar inside Visual -->
+  <div class="relative z-10 pt-3 border-t border-[var(--border)] flex items-center justify-between text-[10px] text-[var(--text-muted)]">
+    <div>ARCHETYPE: <span class="text-[var(--text-primary)] font-semibold">FULL STACK</span></div>
+    <div>LATENCY: <span class="text-emerald-600 dark:text-emerald-400 font-semibold">&lt; 45ms</span></div>
+  </div>
+
+</div>

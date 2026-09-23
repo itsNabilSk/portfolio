@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects.js';
+---
+
+<Layout
+  title="Selected Systems & Projects | Nabil Shaikh"
+  description="Comprehensive index of software systems, backend pipelines, and full-stack web applications engineered by Mohammed Nabil Shaikh (Nabil Shaikh)."
+>
+  <section class="pt-32 pb-16 md:pt-40 md:pb-24 bg-theme hairline-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">ALL SYSTEMS</span>
+        <span class="text-[var(--border)]">/</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">SOFTWARE INDEX</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-primary)] tracking-tight mb-6 font-normal">
+        Engineered Systems
+      </h1>
+
+      <p class="text-base sm:text-lg text-[var(--text-muted)] font-sans max-w-2xl leading-relaxed">
+        A catalog of production-ready web applications, backend services, in-memory processing pipelines, and core foundations built by Nabil Shaikh.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Project Grid -->
+  <section class="py-20 bg-theme hairline-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {projects.map((p) => (
+          <article class="p-8 sm:p-10 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 hover:shadow-sm transition-all duration-300 flex flex-col justify-between" data-cursor="project">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] mb-6 pb-3 border-b border-[var(--border)]">
+                <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] font-semibold">
+                  SYSTEM {p.number}
+                </span>
+                <span class="text-[var(--accent)] uppercase tracking-wider text-[11px] font-semibold">{p.categoryBadge}</span>
+              </div>
+
+              <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)] tracking-tight mb-2">
+                {p.title}
+              </h2>
+
+              <div class="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider mb-4">
+                {p.tagline}
+              </div>
+
+              <p class="text-sm text-[var(--text-muted)] font-sans leading-relaxed mb-6">
+                {p.description}
+              </p>
+
+              <!-- Architecture summary -->
+              <div class="p-3.5 rounded-lg bg-[var(--surface-subtle)] border border-[var(--border)] text-xs font-mono mb-6">
+                <div class="text-[10px] text-[var(--accent)] uppercase font-semibold mb-1">DATA FLOW:</div>
+                <div class="text-[var(--text-primary)]">{p.architectureSummary}</div>
+              </div>
+
+              <!-- Tech tags -->
+              <div class="flex flex-wrap gap-1.5 mb-8">
+                {p.technologies.map((t) => (
+                  <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Links -->
+            <div class="pt-6 border-t border-[var(--border)] flex items-center justify-between font-mono text-xs">
+              {p.caseStudyUrl.startsWith('/') ? (
+                <a href={p.caseStudyUrl} class="px-4 py-2 rounded bg-[var(--accent)] hover:opacity-90 text-white uppercase tracking-wider transition-opacity flex items-center gap-1.5 font-semibold">
+                  <span>Case Study</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+              ) : (
+                <span class="text-[var(--text-muted)] text-[11px]">Practice Repo</span>
+              )}
+              
+              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center gap-1">
+                <span>GitHub Repository</span> <span>↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</Layout>

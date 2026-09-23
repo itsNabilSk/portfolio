@@ -1,0 +1,86 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[var(--surface-subtle)] text-[var(--text-primary)] pt-16 pb-12 hairline-t font-mono text-xs">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[var(--border)]">
+      
+      <!-- Brand & Positioning -->
+      <div class="md:col-span-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] flex items-center justify-center font-mono font-bold text-xs">
+              NS
+            </div>
+            <div>
+              <div class="text-sm font-semibold tracking-tight text-[var(--text-primary)] font-sans">Nabil Shaikh</div>
+              <div class="text-[10px] text-[var(--accent)] tracking-wider uppercase font-semibold">Full Stack Software Developer</div>
+            </div>
+          </div>
+          <p class="text-xs text-[var(--text-muted)] font-sans max-w-sm leading-relaxed mb-4">
+            Engineering resilient backend architectures, production web applications, and search-optimized digital products.
+          </p>
+          <div class="text-[10px] text-[var(--text-dim)]">
+            SaaS · Backend · Business Logic · AI Pipelines · SEO
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="md:col-span-3">
+        <div class="text-[10px] uppercase text-[var(--text-muted)] tracking-widest mb-4">Index</div>
+        <ul class="space-y-2 text-xs">
+          <li><a href="/#work" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">Selected Work</a></li>
+          <li><a href="/#experience" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">Experience</a></li>
+          <li><a href="/#systems" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">System Logic</a></li>
+          <li><a href="/#saas-architecture" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">SaaS Architecture</a></li>
+          <li><a href="/#skills" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">Skills</a></li>
+          <li><a href="/resume" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">Resume</a></li>
+          <li><a href="/about" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">About & Principles</a></li>
+          <li><a href="/contact" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Channels -->
+      <div class="md:col-span-3">
+        <div class="text-[10px] uppercase text-[var(--text-muted)] tracking-widest mb-4">Channels</div>
+        <ul class="space-y-2 text-xs">
+          <li>
+            <a href="https://github.com/itsNabilSk" target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors flex items-center gap-1.5">
+              <span>GitHub</span> <span class="text-[var(--text-dim)] text-[10px]">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/nabil-shaikh-124a292b8/" target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors flex items-center gap-1.5">
+              <span>LinkedIn</span> <span class="text-[var(--text-dim)] text-[10px]">↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:mohammednabilshaikhwork@gmail.com" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">
+              <span>Direct Email</span>
+            </a>
+          </li>
+          <li>
+            <span class="text-[var(--text-dim)] text-[11px]">Mumbai, India</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[var(--text-muted)] gap-4">
+      <div>
+        © {currentYear} Mohammed Nabil Shaikh. All rights reserved.
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Built with Astro & JavaScript</span>
+        <span>·</span>
+        <span>Zero Fabricated Claims</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

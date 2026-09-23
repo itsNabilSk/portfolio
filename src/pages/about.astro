@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import EducationCertifications from '../components/EducationCertifications.astro';
+import TechStackGraph from '../components/TechStackGraph.astro';
+---
+
+<Layout
+  title="About Mohammed Nabil Shaikh — Software Engineer"
+  description="Background, engineering philosophy, and commercial experience of Mohammed Nabil Shaikh — Software Engineer & Full Stack Developer based in Mumbai, India."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-24 bg-theme hairline-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">PROFILE & PHILOSOPHY</span>
+        <span class="text-[var(--border)]">/</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">ABOUT THE ENGINEER</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-primary)] tracking-tight mb-8 font-normal leading-[1.15]">
+        Building software that works <span class="italic text-[var(--accent)] font-normal font-serif">beyond</span> the interface.
+      </h1>
+
+      <div class="space-y-6 text-base sm:text-lg text-[var(--text-muted)] font-sans leading-relaxed">
+        <p class="text-lg sm:text-xl text-[var(--text-primary)] leading-relaxed">
+          I'm <strong class="font-medium text-[var(--text-primary)]">Mohammed Nabil Shaikh</strong>, a Software Engineer from Mumbai focused on building practical, production-oriented software.
+        </p>
+        <p>
+          My work spans full-stack web applications, SaaS products, backend systems, APIs, databases, business logic, AI-assisted workflows, performance optimization, and technical SEO.
+        </p>
+        <p>
+          I've worked on real-world products and client projects across different markets, giving me hands-on experience translating business requirements into working software rather than simply implementing interfaces.
+        </p>
+        <p>
+          Currently working as a <strong class="text-[var(--text-primary)] font-semibold">Full Stack Developer Intern at Nexcore Alliance</strong> in Mumbai, contributing to production-ready features across 10+ live client deployments using the MERN stack, Docker, and AI-assisted workflows.
+        </p>
+        <p>
+          I care about how systems behave beyond the UI — architecture, data flow, validation, authentication, business rules, performance, scalability, and the actual problem the software is solving.
+        </p>
+      </div>
+
+      <!-- Quick Fact Table -->
+      <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border)] font-mono text-xs space-y-4 shadow-xs">
+        <div class="text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider pb-2 border-b border-[var(--border)]">
+          VERIFIED ENGINEERING RECORD
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <div class="text-[var(--text-muted)] text-[10px] uppercase">PRIMARY IDENTITY</div>
+            <div class="text-[var(--text-primary)] font-semibold mt-0.5">Full Stack Software Developer</div>
+          </div>
+          <div>
+            <div class="text-[var(--text-muted)] text-[10px] uppercase">LOCATION</div>
+            <div class="text-[var(--text-primary)] font-semibold mt-0.5">Mumbai, Maharashtra, India</div>
+          </div>
+          <div>
+            <div class="text-[var(--text-muted)] text-[10px] uppercase">CURRENT ROLE</div>
+            <div class="text-[var(--text-primary)] font-semibold mt-0.5">Full Stack Developer Intern @ Nexcore Alliance</div>
+          </div>
+          <div>
+            <div class="text-[var(--text-muted)] text-[10px] uppercase">ACADEMIC BACKGROUND</div>
+            <div class="text-[var(--text-primary)] font-semibold mt-0.5">B.E. Electronics & Telecom (SFIT, 2026)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Engineering Principles Section -->
+  <section class="py-20 bg-theme hairline-b">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12 pb-4 border-b border-[var(--border)]">
+        <div class="text-xs font-mono uppercase text-[var(--accent)] font-semibold mb-1">DISCIPLINE</div>
+        <h2 class="text-3xl font-serif text-[var(--text-primary)]">How I Approach Software Engineering</h2>
+      </div>
+
+      <div class="space-y-6 font-sans">
+        
+        <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-xs">
+          <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold mb-2">01 / REQUIREMENT-FIRST ARCHITECTURE</div>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+            Before writing endpoints or frontend components, I break business requirements into explicit data models, state transitions, validation boundaries, and side-effects. This prevents architectural debt and logic leakage down the road.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-xs">
+          <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold mb-2">02 / DEFENSIVE ERROR HANDLING</div>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+            Every API endpoint is engineered with strict schema validation, structured error handlers, and standard HTTP status codes. APIs should fail gracefully, log clearly, and protect system integrity.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-xs">
+          <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold mb-2">03 / PERFORMANCE AS A DEFAULT</div>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+            High performance is an engineering feature, not a late polish. Through lazy loading, asset optimization, compressed images, and semantic HTML, I consistently deliver 92%+ Lighthouse Performance and Technical SEO scores.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills Component -->
+  <TechStackGraph />
+
+  <!-- Experience Timeline Component -->
+  <ExperienceTimeline />
+
+  <!-- Education & Credentials -->
+  <EducationCertifications />
+</Layout>

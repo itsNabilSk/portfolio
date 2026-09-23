@@ -1,0 +1,312 @@
+---
+// Contact Section — Theme-compatible Contact & Specification Transmitter
+---
+
+<section id="contact" class="py-24 md:py-32 bg-theme relative overflow-hidden hairline-b">
+  <div class="absolute inset-0 grid-bg-pattern opacity-40 pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      
+      <!-- Left Column: Direct Info & Editorial Philosophy -->
+      <div class="lg:col-span-6 flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">11 / ENGAGEMENT</span>
+            <span class="text-[var(--border)]">/</span>
+            <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">GET IN TOUCH</span>
+          </div>
+
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[var(--text-primary)] tracking-tight mb-6 font-normal">
+            Let's build <br />
+            something <span class="italic text-[var(--accent)]">useful.</span>
+          </h2>
+
+          <p class="text-base sm:text-lg text-[var(--text-muted)] font-sans leading-relaxed mb-8">
+            Open to software engineering opportunities, SaaS projects, freelance work, and technical collaborations. Have a software requirement? Let's turn it into a resilient, production-ready system.
+          </p>
+
+          <!-- Direct Verified Channels -->
+          <div class="space-y-3 pt-6 border-t border-[var(--border)] font-mono text-xs">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+              <span class="text-[var(--text-muted)] uppercase text-[10px]">DIRECT EMAIL</span>
+              <a href="mailto:mohammednabilshaikhwork@gmail.com" class="text-[var(--text-primary)] font-semibold hover:text-[var(--accent)] transition-colors mt-1 sm:mt-0 break-all sm:break-normal">
+                mohammednabilshaikhwork@gmail.com ↗
+              </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+              <span class="text-[var(--text-muted)] uppercase text-[10px]">LINKEDIN</span>
+              <a href="https://www.linkedin.com/in/nabil-shaikh-124a292b8/" target="_blank" rel="noopener noreferrer" class="text-[var(--text-primary)] font-semibold hover:text-[var(--accent)] transition-colors mt-1 sm:mt-0">
+                linkedin.com/in/nabil-shaikh ↗
+              </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+              <span class="text-[var(--text-muted)] uppercase text-[10px]">GITHUB</span>
+              <a href="https://github.com/itsNabilSk" target="_blank" rel="noopener noreferrer" class="text-[var(--text-primary)] font-semibold hover:text-[var(--accent)] transition-colors mt-1 sm:mt-0">
+                github.com/itsNabilSk ↗
+              </a>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-colors">
+              <span class="text-[var(--text-muted)] uppercase text-[10px]">PHONE / WHATSAPP</span>
+              <a href="tel:+918828258588" class="text-[var(--text-primary)] font-semibold hover:text-[var(--accent)] transition-colors mt-1 sm:mt-0">
+                +91 8828258588
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Availability Note -->
+        <div class="mt-8 pt-4 border-t border-[var(--border)] text-xs font-mono text-[var(--text-muted)] flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>LOCATION: MUMBAI, INDIA · AVAILABLE FOR FULL-TIME ROLES & PROJECTS</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Contact Form -->
+      <div class="lg:col-span-6 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 sm:p-10 shadow-lg">
+        <div class="mb-6 pb-4 border-b border-[var(--border)]">
+          <div class="text-xs font-mono uppercase text-[var(--accent)] font-semibold">TRANSMIT SPECIFICATION</div>
+          <h3 class="text-xl font-serif text-[var(--text-primary)] mt-1">Start a Conversation</h3>
+        </div>
+
+        <form id="contact-form" class="space-y-4" novalidate>
+          <!-- Honeypot Field (Anti-Spam Bot Trap) -->
+          <div class="hidden" aria-hidden="true" style="display: none !important;">
+            <label for="form-hp-company">Leave this field blank</label>
+            <input
+              type="text"
+              id="form-hp-company"
+              name="hp_company"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <div>
+            <label for="form-name" class="block text-xs font-mono uppercase text-[var(--text-muted)] mb-1.5">
+              Your Name / Organization <span class="text-[var(--accent)]">*</span>
+            </label>
+            <input
+              type="text"
+              id="form-name"
+              name="name"
+              required
+              maxlength="120"
+              placeholder="e.g. Alex Morgan"
+              class="w-full px-4 py-3 rounded-md bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="form-email" class="block text-xs font-mono uppercase text-[var(--text-muted)] mb-1.5">
+              Email Address <span class="text-[var(--accent)]">*</span>
+            </label>
+            <input
+              type="email"
+              id="form-email"
+              name="email"
+              required
+              maxlength="150"
+              placeholder="alex@company.com"
+              class="w-full px-4 py-3 rounded-md bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="form-subject" class="block text-xs font-mono uppercase text-[var(--text-muted)] mb-1.5">
+              Project / Opportunity Type
+            </label>
+            <select
+              id="form-subject"
+              name="opportunityType"
+              class="w-full px-4 py-3 rounded-md bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none transition-colors cursor-pointer"
+            >
+              <option value="Full-Time Engineering Role">Full-time Software Engineering Role</option>
+              <option value="SaaS Architecture & Development">SaaS Product Development</option>
+              <option value="Full Stack Web Application">Production Web Application</option>
+              <option value="Backend / REST API Development">Backend Engineering / REST APIs</option>
+              <option value="Freelance Project">Freelance Engineering Project</option>
+              <option value="Technical Collaboration">Technical Collaboration / Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="form-message" class="block text-xs font-mono uppercase text-[var(--text-muted)] mb-1.5">
+              Project Requirements / Role Details <span class="text-[var(--accent)]">*</span>
+            </label>
+            <textarea
+              id="form-message"
+              name="message"
+              rows="4"
+              required
+              maxlength="4000"
+              placeholder="Describe your project, timeline, tech stack, or engineering requirements..."
+              class="w-full px-4 py-3 rounded-md bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Status / Feedback Area -->
+          <div id="form-feedback" class="text-xs font-mono hidden py-3 px-4 rounded-md transition-all duration-200"></div>
+
+          <button
+            type="submit"
+            id="form-submit-btn"
+            class="w-full py-3.5 rounded-md bg-[var(--accent)] hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-white font-mono font-semibold text-xs tracking-wider uppercase transition-all duration-200 shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span id="submit-btn-text">Send Specification</span>
+            <svg id="submit-btn-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg id="submit-btn-spinner" class="w-4 h-4 animate-spin hidden" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function initContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const feedback = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('submit-btn-text');
+    const btnIcon = document.getElementById('submit-btn-icon');
+    const btnSpinner = document.getElementById('submit-btn-spinner');
+
+    if (!form || !submitBtn || !btnText) return;
+
+    function setSubmitting(isSubmitting: boolean) {
+      if (!submitBtn || !btnText) return;
+      submitBtn.disabled = isSubmitting;
+      if (isSubmitting) {
+        btnText.textContent = 'SENDING...';
+        btnIcon?.classList.add('hidden');
+        btnSpinner?.classList.remove('hidden');
+      } else {
+        btnText.textContent = 'Send Specification';
+        btnIcon?.classList.remove('hidden');
+        btnSpinner?.classList.add('hidden');
+      }
+    }
+
+    function showFeedback(type: 'success' | 'error', title: string, message: string) {
+      if (!feedback) return;
+      feedback.className = 'text-xs font-mono py-3 px-4 rounded-md transition-all duration-200 block border';
+
+      if (type === 'success') {
+        feedback.classList.add('bg-emerald-500/10', 'text-emerald-700', 'dark:text-emerald-300', 'border-emerald-500/30');
+        feedback.innerHTML = `
+          <div class="font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+            ${title}
+          </div>
+          <div class="leading-relaxed opacity-90">${message}</div>
+        `;
+      } else {
+        feedback.classList.add('bg-rose-500/10', 'text-rose-700', 'dark:text-rose-300', 'border-rose-500/30');
+        feedback.innerHTML = `
+          <div class="font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block"></span>
+            ${title}
+          </div>
+          <div class="leading-relaxed opacity-90">${message}</div>
+        `;
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('form-name') as HTMLInputElement | null;
+      const emailInput = document.getElementById('form-email') as HTMLInputElement | null;
+      const opportunityInput = document.getElementById('form-subject') as HTMLSelectElement | null;
+      const messageInput = document.getElementById('form-message') as HTMLTextAreaElement | null;
+      const hpInput = document.getElementById('form-hp-company') as HTMLInputElement | null;
+
+      const name = (nameInput?.value || '').trim();
+      const email = (emailInput?.value || '').trim();
+      const opportunityType = (opportunityInput?.value || '').trim();
+      const message = (messageInput?.value || '').trim();
+      const hp_company = (hpInput?.value || '').trim();
+
+      // Client-side validation
+      if (!name || name.length < 2) {
+        showFeedback('error', 'VALIDATION ERROR', 'Please enter your name or organization (minimum 2 characters).');
+        nameInput?.focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        showFeedback('error', 'VALIDATION ERROR', 'Please provide a valid email address.');
+        emailInput?.focus();
+        return;
+      }
+
+      if (!message || message.length < 10) {
+        showFeedback('error', 'VALIDATION ERROR', 'Please enter your project requirements or details (minimum 10 characters).');
+        messageInput?.focus();
+        return;
+      }
+
+      // Hide previous feedback
+      if (feedback) {
+        feedback.classList.add('hidden');
+      }
+
+      setSubmitting(true);
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            opportunityType,
+            message,
+            hp_company,
+          }),
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (response.ok && data.success) {
+          showFeedback(
+            'success',
+            'MESSAGE RECEIVED',
+            'Thanks — your message has been sent successfully. I\'ll get back to you soon.'
+          );
+          form.reset();
+        } else {
+          showFeedback(
+            'error',
+            'UNABLE TO SEND',
+            data.error || 'Something went wrong while sending your message. Please try again or email me directly at mohammednabilshaikhwork@gmail.com.'
+          );
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        showFeedback(
+          'error',
+          'UNABLE TO SEND',
+          'Something went wrong while sending your message. Please try again or email me directly at mohammednabilshaikhwork@gmail.com.'
+        );
+      } finally {
+        setSubmitting(false);
+      }
+    });
+  })();
+</script>
+

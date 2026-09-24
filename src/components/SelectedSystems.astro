@@ -6,9 +6,9 @@ import { projects } from '../data/projects.js';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[var(--border)] gap-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-6 border-b border-[var(--border)] gap-4 sm:gap-6">
       <div>
-        <div class="flex items-center gap-2 mb-3">
+        <div class="flex items-center gap-2 mb-2 sm:mb-3">
           <span class="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">02 / ARCHITECTURE & CODE</span>
           <span class="text-[var(--border)]">/</span>
           <span class="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">SELECTED WORK</span>
@@ -23,9 +23,128 @@ import { projects } from '../data/projects.js';
     </div>
 
     <!-- Systems List: Product Engineering Layouts -->
-    <div class="flex flex-col gap-12 sm:gap-16 lg:gap-20">
+    <div class="flex flex-col gap-10 sm:gap-16 lg:gap-20">
       
-      <!-- Project 01: SecureDoc AI (Hero Pipeline Architecture) -->
+      <!-- Project 01: Music Memory Room (Live Collaborative Production App) -->
+      {projects.filter(p => p.id === 'music-memory-room').map(p => (
+        <article class="group relative rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-md hover:border-[var(--accent)]/60 transition-all duration-300" data-cursor="project">
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-6 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 text-xs font-mono mb-4 flex-wrap">
+                  <span class="px-2.5 py-0.5 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] font-semibold">
+                    SYSTEM {p.number}
+                  </span>
+                  <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
+                  <span class="inline-flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    LIVE PRODUCT
+                  </span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-2 sm:mb-3 group-hover:text-[var(--accent)] transition-colors">
+                  {p.title}
+                </h3>
+
+                <p class="text-xs sm:text-sm font-mono text-[var(--accent)] uppercase tracking-wider mb-4">
+                  "{p.tagline}"
+                </p>
+
+                <p class="text-sm text-[var(--text-muted)] font-sans leading-relaxed mb-6">
+                  {p.description}
+                </p>
+
+                <!-- Concrete Evidence Matrix: Claim -> Implementation -> Result -->
+                <div class="p-4 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border)] mb-6 font-mono text-xs space-y-2">
+                  <div class="text-[10px] text-[var(--accent)] font-bold uppercase tracking-wider pb-1 border-b border-[var(--border)]">
+                    ENGINEERING ARCHITECTURE
+                  </div>
+                  <div class="text-[11px] text-[var(--text-primary)]">
+                    <span class="text-[var(--text-muted)]">MODEL:</span> 2-person private room with Room ID + passcode
+                  </div>
+                  <div class="text-[11px] text-[var(--text-primary)]">
+                    <span class="text-[var(--text-muted)]">ENGINEERING:</span> Real-time state sync + YouTube API embedded player
+                  </div>
+                  <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                    <span class="text-[var(--text-muted)]">OUTPUT:</span> Ephemeral listening session seals into permanent scrapbook
+                  </div>
+                </div>
+
+                <!-- Technologies -->
+                <div class="flex flex-wrap gap-1.5 mb-6 sm:mb-8">
+                  {p.technologies.map(t => (
+                    <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Action Links (Touch friendly minimum 44px height) -->
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 pt-4 border-t border-[var(--border)]">
+                <a
+                  href={p.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full sm:w-auto px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 font-semibold shadow-xs min-h-[44px]"
+                >
+                  <span>View Live</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+                <a
+                  href={p.caseStudyUrl}
+                  class="w-full sm:w-auto px-4 py-3 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 min-h-[44px]"
+                >
+                  <span>Read Case Study</span>
+                  <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Visual Architecture Diagram -->
+            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-4 sm:p-6 font-mono text-xs">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)] text-[10px] text-[var(--text-muted)]">
+                <span class="text-[var(--accent)] font-semibold uppercase">ROOM LIFECYCLE & SYNC</span>
+                <span>2-USER TOPOLOGY</span>
+              </div>
+
+              <!-- Top Topology: 2 Participants & Sync Bridge -->
+              <div class="grid grid-cols-2 gap-2.5 mb-3.5">
+                <div class="p-3 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[9px] text-[var(--text-muted)] uppercase">PARTICIPANT A</div>
+                  <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">Host / Creator</div>
+                  <div class="text-[9px] text-[var(--accent)] mt-0.5">Passcode Generator</div>
+                </div>
+                <div class="p-3 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[9px] text-[var(--text-muted)] uppercase">PARTICIPANT B</div>
+                  <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">Invited Partner</div>
+                  <div class="text-[9px] text-emerald-600 dark:text-emerald-400 mt-0.5">Zero Registration</div>
+                </div>
+              </div>
+
+              <!-- Pipeline Step Flow -->
+              <div class="space-y-2">
+                {p.systemFlow.steps.map((step, sIdx) => (
+                  <div class="p-2.5 sm:p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-start gap-2.5 sm:gap-3">
+                    <div class="w-5 h-5 rounded bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30 flex items-center justify-center font-mono font-bold text-[10px] shrink-0">
+                      0{sIdx + 1}
+                    </div>
+                    <div>
+                      <div class="text-[var(--text-primary)] font-semibold text-xs">{step.name}</div>
+                      <div class="text-[11px] text-[var(--text-muted)] mt-0.5 leading-snug">{step.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+
+      <!-- Project 02: SecureDoc AI (Hero Pipeline Architecture) -->
       {projects.filter(p => p.id === 'securedoc-ai').map(p => (
         <article class="group relative rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-md hover:border-[var(--accent)]/60 transition-all duration-300" data-cursor="project">
           <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -33,14 +152,14 @@ import { projects } from '../data/projects.js';
             <!-- Left Info Column -->
             <div class="lg:col-span-6 flex flex-col justify-between">
               <div>
-                <div class="flex items-center gap-3 text-xs font-mono mb-4">
+                <div class="flex items-center gap-3 text-xs font-mono mb-4 flex-wrap">
                   <span class="px-2.5 py-0.5 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] font-semibold">
                     SYSTEM {p.number}
                   </span>
                   <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
                 </div>
 
-                <h3 class="text-3xl sm:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-2 sm:mb-3 group-hover:text-[var(--accent)] transition-colors">
                   {p.title}
                 </h3>
 
@@ -69,7 +188,7 @@ import { projects } from '../data/projects.js';
                 </div>
 
                 <!-- Technologies -->
-                <div class="flex flex-wrap gap-1.5 mb-8">
+                <div class="flex flex-wrap gap-1.5 mb-6 sm:mb-8">
                   {p.technologies.map(t => (
                     <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)]">
                       {t}
@@ -79,10 +198,10 @@ import { projects } from '../data/projects.js';
               </div>
 
               <!-- Action Links -->
-              <div class="flex flex-wrap items-center gap-3.5 pt-4 border-t border-[var(--border)]">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 pt-4 border-t border-[var(--border)]">
                 <a
                   href={p.caseStudyUrl}
-                  class="px-5 py-2.5 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2 font-semibold shadow-xs"
+                  class="w-full sm:w-auto px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 font-semibold shadow-xs min-h-[44px]"
                 >
                   <span>Read Case Study</span>
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -91,7 +210,7 @@ import { projects } from '../data/projects.js';
                   href={p.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="px-4 py-2.5 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2"
+                  class="w-full sm:w-auto px-4 py-3 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 min-h-[44px]"
                 >
                   <span>GitHub Repo</span>
                   <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
@@ -100,22 +219,22 @@ import { projects } from '../data/projects.js';
             </div>
 
             <!-- Right Visual Architecture Diagram -->
-            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-5 sm:p-6 font-mono text-xs">
+            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-4 sm:p-6 font-mono text-xs">
               <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)] text-[10px] text-[var(--text-muted)]">
                 <span class="text-[var(--accent)] font-semibold uppercase">PIPELINE ARCHITECTURE</span>
                 <span>ZERO DISK RESIDUE</span>
               </div>
 
               <!-- Pipeline Step Flow -->
-              <div class="space-y-2.5">
+              <div class="space-y-2">
                 {p.systemFlow.steps.map((step, sIdx) => (
-                  <div class="p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-start gap-3">
+                  <div class="p-2.5 sm:p-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-start gap-2.5 sm:gap-3">
                     <div class="w-5 h-5 rounded bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30 flex items-center justify-center font-mono font-bold text-[10px] shrink-0">
                       0{sIdx + 1}
                     </div>
                     <div>
                       <div class="text-[var(--text-primary)] font-semibold text-xs">{step.name}</div>
-                      <div class="text-[11px] text-[var(--text-muted)] mt-0.5">{step.detail}</div>
+                      <div class="text-[11px] text-[var(--text-muted)] mt-0.5 leading-snug">{step.detail}</div>
                     </div>
                   </div>
                 ))}
@@ -128,17 +247,17 @@ import { projects } from '../data/projects.js';
                   <span class="text-emerald-600 dark:text-emerald-400">MASK: ACTIVE</span>
                 </div>
                 <div class="grid grid-cols-2 gap-2 text-[var(--text-primary)]">
-                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
-                    PAN: <span class="text-[var(--accent)] font-semibold">[REDACTED_PAN]</span>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono text-center">
+                    PAN: <span class="text-[var(--accent)] font-semibold">[REDACTED]</span>
                   </div>
-                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
-                    Aadhaar: <span class="text-[var(--accent)] font-semibold">[REDACTED_UID]</span>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono text-center">
+                    UID: <span class="text-[var(--accent)] font-semibold">[REDACTED]</span>
                   </div>
-                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
-                    Email: <span class="text-[var(--accent)] font-semibold">[REDACTED_EMAIL]</span>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono text-center">
+                    Email: <span class="text-[var(--accent)] font-semibold">[REDACTED]</span>
                   </div>
-                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono">
-                    Phone: <span class="text-[var(--accent)] font-semibold">[REDACTED_PHONE]</span>
+                  <div class="bg-[var(--surface-subtle)] px-2 py-1 rounded border border-[var(--border)] font-mono text-center">
+                    Phone: <span class="text-[var(--accent)] font-semibold">[REDACTED]</span>
                   </div>
                 </div>
               </div>
@@ -148,7 +267,7 @@ import { projects } from '../data/projects.js';
         </article>
       ))}
 
-      <!-- Project 02: Hospital Management System (RBAC & Transaction Flow) -->
+      <!-- Project 03: Hospital Management System (RBAC & Transaction Flow) -->
       {projects.filter(p => p.id === 'hospital-management').map(p => (
         <article class="group relative rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-md hover:border-[var(--accent)]/60 transition-all duration-300" data-cursor="project">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -156,14 +275,14 @@ import { projects } from '../data/projects.js';
             <!-- Left Info Column -->
             <div class="lg:col-span-6 flex flex-col justify-between">
               <div>
-                <div class="flex items-center gap-3 text-xs font-mono mb-4">
+                <div class="flex items-center gap-3 text-xs font-mono mb-4 flex-wrap">
                   <span class="px-2.5 py-0.5 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] font-semibold">
                     SYSTEM {p.number}
                   </span>
                   <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
                 </div>
 
-                <h3 class="text-3xl sm:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-[var(--text-primary)] tracking-tight mb-2 sm:mb-3 group-hover:text-[var(--accent)] transition-colors">
                   {p.title}
                 </h3>
 
@@ -192,7 +311,7 @@ import { projects } from '../data/projects.js';
                 </div>
 
                 <!-- Technologies -->
-                <div class="flex flex-wrap gap-1.5 mb-8">
+                <div class="flex flex-wrap gap-1.5 mb-6 sm:mb-8">
                   {p.technologies.map(t => (
                     <span class="px-2.5 py-1 rounded bg-[var(--surface-subtle)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-primary)]">
                       {t}
@@ -202,10 +321,10 @@ import { projects } from '../data/projects.js';
               </div>
 
               <!-- Action Links -->
-              <div class="flex flex-wrap items-center gap-3.5 pt-4 border-t border-[var(--border)]">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3 pt-4 border-t border-[var(--border)]">
                 <a
                   href={p.caseStudyUrl}
-                  class="px-5 py-2.5 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2 font-semibold shadow-xs"
+                  class="w-full sm:w-auto px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 font-semibold shadow-xs min-h-[44px]"
                 >
                   <span>Read Case Study</span>
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -214,7 +333,7 @@ import { projects } from '../data/projects.js';
                   href={p.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="px-4 py-2.5 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center gap-2"
+                  class="w-full sm:w-auto px-4 py-3 rounded-md bg-[var(--surface-subtle)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] transition-all duration-200 text-xs font-mono tracking-wider uppercase flex items-center justify-center gap-2 min-h-[44px]"
                 >
                   <span>GitHub Repo</span>
                   <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
@@ -223,7 +342,7 @@ import { projects } from '../data/projects.js';
             </div>
 
             <!-- Right RBAC & Scheduling Flow Visualization -->
-            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-5 sm:p-6 font-mono text-xs">
+            <div class="lg:col-span-6 bg-[var(--surface-subtle)] border border-[var(--border)] rounded-xl p-4 sm:p-6 font-mono text-xs">
               <div class="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border)] text-[10px] text-[var(--text-muted)]">
                 <span class="text-[var(--text-primary)] font-semibold uppercase">RBAC & TRANSACTION FLOW</span>
                 <span class="text-[var(--accent)] font-semibold">12+ REST ENDPOINTS</span>
@@ -231,20 +350,20 @@ import { projects } from '../data/projects.js';
 
               <!-- RBAC Roles -->
               <div class="grid grid-cols-3 gap-2 mb-4">
-                <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
-                  <div class="text-[9px] text-[var(--text-muted)] uppercase">ROLE 01</div>
+                <div class="p-2 sm:p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[8px] sm:text-[9px] text-[var(--text-muted)] uppercase">ROLE 01</div>
                   <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">ADMIN</div>
-                  <div class="text-[9px] text-[var(--accent)] mt-0.5">System Scope</div>
+                  <div class="text-[8px] sm:text-[9px] text-[var(--accent)] mt-0.5">System</div>
                 </div>
-                <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
-                  <div class="text-[9px] text-[var(--text-muted)] uppercase">ROLE 02</div>
+                <div class="p-2 sm:p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[8px] sm:text-[9px] text-[var(--text-muted)] uppercase">ROLE 02</div>
                   <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">DOCTOR</div>
-                  <div class="text-[9px] text-[var(--accent)] mt-0.5">Shifts & Slots</div>
+                  <div class="text-[8px] sm:text-[9px] text-[var(--accent)] mt-0.5">Shifts</div>
                 </div>
-                <div class="p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
-                  <div class="text-[9px] text-[var(--text-muted)] uppercase">ROLE 03</div>
+                <div class="p-2 sm:p-2.5 rounded bg-[var(--surface)] border border-[var(--border)] text-center">
+                  <div class="text-[8px] sm:text-[9px] text-[var(--text-muted)] uppercase">ROLE 03</div>
                   <div class="text-xs font-bold text-[var(--text-primary)] mt-0.5">PATIENT</div>
-                  <div class="text-[9px] text-[var(--accent)] mt-0.5">Reservations</div>
+                  <div class="text-[8px] sm:text-[9px] text-[var(--accent)] mt-0.5">Booking</div>
                 </div>
               </div>
 
@@ -255,7 +374,7 @@ import { projects } from '../data/projects.js';
                     <span class="text-[var(--accent)] font-bold font-mono">0{sIdx + 1}</span>
                     <div>
                       <div class="font-semibold text-[var(--text-primary)]">{step.name}</div>
-                      <div class="text-[11px] text-[var(--text-muted)]">{step.detail}</div>
+                      <div class="text-[11px] text-[var(--text-muted)] leading-snug">{step.detail}</div>
                     </div>
                   </div>
                 ))}
@@ -267,9 +386,9 @@ import { projects } from '../data/projects.js';
       ))}
 
       <!-- Two-Column Grid for Secondary Projects: Weather Jankar & JS Practice -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         
-        <!-- Project 03: Weather Jankar -->
+        <!-- Project 04: Weather Jankar -->
         {projects.filter(p => p.id === 'weather-jankar').map(p => (
           <article class="p-6 sm:p-8 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 transition-all duration-200 flex flex-col justify-between shadow-xs" data-cursor="project">
             <div>
@@ -280,7 +399,7 @@ import { projects } from '../data/projects.js';
                 <span class="text-[var(--accent)] font-semibold">{p.categoryBadge}</span>
               </div>
 
-              <h3 class="text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-2 group-hover:text-[var(--accent)] transition-colors">
+              <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-2 group-hover:text-[var(--accent)] transition-colors">
                 {p.title}
               </h3>
               
@@ -306,18 +425,18 @@ import { projects } from '../data/projects.js';
             </div>
 
             <div class="flex items-center gap-3 pt-4 border-t border-[var(--border)] text-xs font-mono">
-              <a href={p.caseStudyUrl} class="text-[var(--text-primary)] hover:text-[var(--accent)] font-semibold flex items-center gap-1">
+              <a href={p.caseStudyUrl} class="text-[var(--text-primary)] hover:text-[var(--accent)] font-semibold flex items-center gap-1 min-h-[44px]">
                 <span>Case Study</span> <span>→</span>
               </a>
               <span class="text-[var(--border)]">|</span>
-              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center gap-1">
+              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center gap-1 min-h-[44px]">
                 <span>GitHub</span> <span>↗</span>
               </a>
             </div>
           </article>
         ))}
 
-        <!-- Project 04: JS Practice Repository -->
+        <!-- Project 05: JS Practice Repository -->
         {projects.filter(p => p.id === 'javascript-practice').map(p => (
           <article class="p-6 sm:p-8 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 transition-all duration-200 flex flex-col justify-between shadow-xs" data-cursor="project">
             <div>
@@ -326,7 +445,7 @@ import { projects } from '../data/projects.js';
                 <span class="text-[var(--text-muted)]">{p.categoryBadge}</span>
               </div>
 
-              <h3 class="text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-2">
+              <h3 class="text-xl sm:text-2xl font-serif text-[var(--text-primary)] tracking-tight mb-2">
                 {p.title}
               </h3>
               
@@ -355,7 +474,7 @@ import { projects } from '../data/projects.js';
 
             <div class="flex items-center justify-between pt-4 border-t border-[var(--border)] text-xs font-mono">
               <span class="text-[11px] text-[var(--text-muted)]">Continuous Learning</span>
-              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-primary)] hover:text-[var(--accent)] font-semibold flex items-center gap-1">
+              <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--text-primary)] hover:text-[var(--accent)] font-semibold flex items-center gap-1 min-h-[44px]">
                 <span>Explore Repo</span> <span>↗</span>
               </a>
             </div>
@@ -368,3 +487,4 @@ import { projects } from '../data/projects.js';
 
   </div>
 </section>
+

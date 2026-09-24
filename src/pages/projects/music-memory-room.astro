@@ -1,0 +1,224 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { projects } from '../../data/projects.js';
+
+const project = projects.find(p => p.id === 'music-memory-room') || {
+  number: '01',
+  title: 'Music Memory Room',
+  tagline: 'Listen Together. Make It a Memory.',
+  category: 'REAL-TIME WEB APP · SYNC AUDIO · COLLABORATIVE UX',
+  technologies: [
+    'JavaScript (ES6+)',
+    'Real-Time Sync',
+    'YouTube Player API',
+    'Session Architecture',
+    'Live State Sync',
+    'Responsive Web App',
+  ],
+  liveUrl: 'https://musicmemoryroom.com/',
+  description: 'A private digital music room for two people to listen to music together in sync, chat in real time, and preserve the moments connected to their favorite songs.',
+};
+---
+
+<CaseStudyLayout
+  title={project.title}
+  subtitle={project.tagline}
+  category={project.category}
+  number={project.number}
+  repoUrl={project.liveUrl}
+  technologies={project.technologies}
+  description={project.description}
+>
+  <!-- Direct Live System Banner -->
+  <div class="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border)] font-mono text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+    <div>
+      <div class="text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider">LIVE PRODUCTION SYSTEM</div>
+      <div class="text-sm font-semibold text-[var(--text-primary)] mt-0.5">musicmemoryroom.com</div>
+      <div class="text-[11px] text-[var(--text-muted)] mt-1">Real-time private listening room for couples, close friends, and family.</div>
+    </div>
+    <a
+      href="https://musicmemoryroom.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white font-mono text-xs uppercase tracking-wider transition-opacity font-semibold flex items-center justify-center gap-2 shrink-0"
+    >
+      <span>Launch Live System</span>
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+    </a>
+  </div>
+
+  <!-- 1. Executive Overview & Problem Context -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono text-[var(--accent)] font-bold uppercase">01 / CONTEXT & OVERVIEW</span>
+      <span class="text-[var(--border)]">/</span>
+      <span class="text-xs font-mono text-[var(--text-muted)] uppercase">PRODUCT OBJECTIVE</span>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)]">
+      Overview & The Product Problem
+    </h2>
+
+    <p class="text-base sm:text-lg text-[var(--text-muted)] font-sans leading-relaxed">
+      Music Memory Room is a private two-person listening environment designed around the emotional connection between music and shared memory. Traditional music streaming platforms are strictly optimized for individual consumption. When two people want to share music remotely, they are forced to juggle awkward screen shares, video calls, or disjointed messaging apps where the music is an afterthought rather than a dedicated shared space.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-mono text-xs">
+      <div class="p-5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border)] space-y-2">
+        <div class="text-[10px] text-rose-500 font-bold uppercase tracking-wider">THE CORE PROBLEM</div>
+        <div class="text-sm font-serif text-[var(--text-primary)]">Fragmented Shared Listening</div>
+        <p class="text-[11px] text-[var(--text-muted)] font-sans leading-relaxed">
+          Generic chat and video tools do not maintain synchronized playback, lack collaborative queue control, and leave zero lasting artifacts of the shared session.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-[var(--surface-subtle)] border border-[var(--border)] space-y-2">
+        <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">THE ENGINEERED SOLUTION</div>
+        <div class="text-sm font-serif text-[var(--text-primary)]">Dedicated 2-Person Listening Room</div>
+        <p class="text-[11px] text-[var(--text-muted)] font-sans leading-relaxed">
+          An ephemeral, registration-free space with real-time audio synchronization, floating reactions, song-specific memory notes, and permanent scrapbook generation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Core 9-Step Lifecycle -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono text-[var(--accent)] font-bold uppercase">02 / INTERACTION FLOW</span>
+      <span class="text-[var(--border)]">/</span>
+      <span class="text-xs font-mono text-[var(--text-muted)] uppercase">THE 9-STEP JOURNEY</span>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)]">
+      The Core Product Lifecycle
+    </h2>
+
+    <p class="text-sm sm:text-base text-[var(--text-muted)] font-sans leading-relaxed">
+      The application lifecycle transitions seamlessly from an ephemeral interactive session to a permanent, preserved digital scrapbook:
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+      {[
+        { step: "01", title: "Create Private Room", desc: "Instantly create a private space with zero account or sign-up friction." },
+        { step: "02", title: "Share Room ID & Passcode", desc: "High-entropy passcode provides secure access exclusively to the invited partner." },
+        { step: "03", title: "Frictionless Join", desc: "Second participant joins directly from any modern web browser." },
+        { step: "04", title: "Build Shared Soundtrack", desc: "Collaboratively search, add, and reorder tracks in the shared queue." },
+        { step: "05", title: "Synchronized Playback", desc: "Real-time state sync across playback time, play/pause, and track transitions." },
+        { step: "06", title: "Live Chat & Reactions", desc: "Lightweight live messaging and expressive floating emoji reactions." },
+        { step: "07", title: "Attach Memory Notes", desc: "Write personal, song-specific reflections attached directly to tracks in the playlist." },
+        { step: "08", title: "Seal the Room", desc: "Mutual trigger to finalize the session and freeze all accumulated shared moments." },
+        { step: "09", title: "Permanent Scrapbook", desc: "Room session is deleted, generating an immutable digital memory keepsake." },
+      ].map((item) => (
+        <div class="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex flex-col justify-between space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="w-6 h-6 rounded bg-[var(--accent)]/15 border border-[var(--accent)]/30 text-[var(--accent)] flex items-center justify-center font-bold text-[11px]">
+              {item.step}
+            </span>
+            <span class="text-[9px] text-[var(--text-dim)] uppercase">STAGE {item.step}</span>
+          </div>
+          <div>
+            <div class="font-semibold text-xs text-[var(--text-primary)] font-sans">{item.title}</div>
+            <div class="text-[11px] text-[var(--text-muted)] font-sans mt-1 leading-snug">{item.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 3. Engineering & Architectural Highlights -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono text-[var(--accent)] font-bold uppercase">03 / ARCHITECTURE & SYSTEMS</span>
+      <span class="text-[var(--border)]">/</span>
+      <span class="text-xs font-mono text-[var(--text-muted)] uppercase">TECHNICAL HIGHLIGHTS</span>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)]">
+      Engineering Highlights
+    </h2>
+
+    <div class="space-y-4 font-sans text-sm">
+      
+      <!-- Highlight 1: Real-Time Synchronization -->
+      <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-2 shadow-xs">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold">01 / REAL-TIME APPLICATION STATE & SYNC</div>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Engineered real-time state synchronization that harmonizes playback position, track selection, queue additions, skips, and live chat events across both participants. Playback events communicate state changes with defensive drift correction to accommodate varying network conditions and browser autoplay policies.
+        </p>
+      </div>
+
+      <!-- Highlight 2: YouTube API Integration -->
+      <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-2 shadow-xs">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold">02 / EMBEDDED YOUTUBE PLAYER API INTEGRATION</div>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Integrated YouTube Player IFrame API for video streaming, track duration tracking, buffered state monitoring, and automated track advancement on song completion. Handles player initialization, volume controls, and responsive sizing across mobile and desktop viewports.
+        </p>
+      </div>
+
+      <!-- Highlight 3: Ephemeral Session & Privacy Architecture -->
+      <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-2 shadow-xs">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold">03 / EPHEMERAL-TO-PERSISTENT DATA LIFECYCLE</div>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Built a clean privacy model: active listening rooms exist as temporary 2-person sessions secured by high-entropy passcodes without demanding permanent user account registration. When users trigger "Seal Room", the system aggregates all songs, memory notes, and chat timestamps into an immutable digital scrapbook while permanently removing the transient live room session.
+        </p>
+      </div>
+
+      <!-- Highlight 4: Collaborative UX & Real-Time Interaction -->
+      <div class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] space-y-2 shadow-xs">
+        <div class="text-xs font-mono text-[var(--accent)] uppercase font-bold">04 / COLLABORATIVE PLAYLIST & FLOATING REACTIONS</div>
+        <p class="text-[var(--text-muted)] leading-relaxed">
+          Designed a collaborative interface supporting mutual queue modification, reordering, synchronized track removal, and instant floating emoji animations that render dynamically on both clients without disrupting audio playback.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. System Verification Table -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono text-[var(--accent)] font-bold uppercase">04 / VERIFIED CAPABILITIES</span>
+      <span class="text-[var(--border)]">/</span>
+      <span class="text-xs font-mono text-[var(--text-muted)] uppercase">PRODUCTION TRUTH MATRIX</span>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-serif text-[var(--text-primary)]">
+      System Capabilities Matrix
+    </h2>
+
+    <div class="overflow-x-auto">
+      <table class="w-full border border-[var(--border)] rounded-xl font-mono text-xs overflow-hidden">
+        <thead class="bg-[var(--surface-subtle)] border-b border-[var(--border)]">
+          <tr>
+            <th class="py-3 px-4 text-left text-[10px] text-[var(--accent)] uppercase">Feature Area</th>
+            <th class="py-3 px-4 text-left text-[10px] text-[var(--accent)] uppercase">Engineering Approach</th>
+            <th class="py-3 px-4 text-left text-[10px] text-[var(--accent)] uppercase">Verified Outcome</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-[var(--border)] bg-[var(--surface)] text-[11px]">
+          <tr>
+            <td class="py-3 px-4 font-semibold text-[var(--text-primary)]">Room Capacity</td>
+            <td class="py-3 px-4 text-[var(--text-muted)]">Strict 2-participant room boundary validation</td>
+            <td class="py-3 px-4 text-emerald-600 dark:text-emerald-400">Enforces private, intimate couple/friend experience</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-semibold text-[var(--text-primary)]">Authentication</td>
+            <td class="py-3 px-4 text-[var(--text-muted)]">Room ID + High-Entropy Passcode</td>
+            <td class="py-3 px-4 text-emerald-600 dark:text-emerald-400">Zero account registration barriers</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-semibold text-[var(--text-primary)]">Audio Source</td>
+            <td class="py-3 px-4 text-[var(--text-muted)]">YouTube Player IFrame API integration</td>
+            <td class="py-3 px-4 text-emerald-600 dark:text-emerald-400">Vast music catalog with embedded playback</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-semibold text-[var(--text-primary)]">Session Artifact</td>
+            <td class="py-3 px-4 text-[var(--text-muted)]">Seal Room state transformation</td>
+            <td class="py-3 px-4 text-emerald-600 dark:text-emerald-400">Permanent digital memory scrapbook keepsake</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</CaseStudyLayout>

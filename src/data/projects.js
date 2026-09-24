@@ -1,7 +1,54 @@
 export const projects = [
   {
-    id: "securedoc-ai",
+    id: "music-memory-room",
     number: "01",
+    title: "Music Memory Room",
+    tagline: "Listen Together. Make It a Memory.",
+    category: "REAL-TIME WEB APP · SYNC AUDIO · COLLABORATIVE UX",
+    categoryBadge: "Real-Time & Sync Experience",
+    description:
+      "A private digital music room for two people to listen to music together in sync, chat in real time, and preserve the moments connected to their favorite songs as a permanent digital scrapbook.",
+    liveUrl: "https://musicmemoryroom.com/",
+    caseStudyUrl: "/projects/music-memory-room",
+    technologies: [
+      "JavaScript (ES6+)",
+      "Real-Time Sync",
+      "YouTube Player API",
+      "Session Architecture",
+      "Live State Sync",
+      "Responsive Web App",
+    ],
+    architectureSummary:
+      "2-User Ephemeral Room → Passcode Auth → YouTube API Sync Engine → Collaborative Queue + Chat → Sealed Memory Scrapbook",
+    featured: true,
+    pipelineSteps: [
+      "Ephemeral Room Creation with High-Entropy Passcode",
+      "2-Participant Session State Binding (Zero Registration)",
+      "Collaborative YouTube Queue Ingestion & Playback Sync",
+      "Real-Time Chat & Floating Emoji Event Dispatch",
+      "Song-Specific Note Attachment & Memory Curation",
+      "Room Sealing & Permanent Scrapbook Generation",
+    ],
+    keyHighlights: [
+      "Private 2-person room model with passcode authentication and zero account creation friction",
+      "Real-time synchronized music playback engine integrated with YouTube Player API",
+      "Collaborative queue management: add, reorder, and skip tracks together in real time",
+      "Ephemeral-to-permanent lifecycle: temporary room session cleans up after sealing into an immutable memory scrapbook",
+    ],
+    systemFlow: {
+      title: "Real-Time Synchronized Listening & Scrapbook Lifecycle",
+      steps: [
+        { name: "01 Room Creation", detail: "Generate private 2-user room with secure Room ID and passcode (no registration required)" },
+        { name: "02 State Sync", detail: "Synchronize playback timestamps and queue state across connected participants" },
+        { name: "03 Shared Interaction", detail: "Real-time chat messaging, floating emoji reactions, and per-track memory notes" },
+        { name: "04 Room Sealing", detail: "Trigger final sealing transition to synthesize all songs, notes, and chat into a memory scrapbook" },
+        { name: "05 Lifecycle Purge", detail: "Delete temporary room session while preserving the permanent digital memory scrapbook" },
+      ],
+    },
+  },
+  {
+    id: "securedoc-ai",
+    number: "02",
     title: "SecureDoc AI",
     tagline: "In-memory document sanitization and pre-LLM redaction pipeline.",
     category: "SECURE DOCUMENT PROCESSING · BACKEND · AI PIPELINE",
@@ -48,7 +95,7 @@ export const projects = [
   },
   {
     id: "hospital-management",
-    number: "02",
+    number: "03",
     title: "Hospital Management System",
     tagline: "Role-based healthcare platform with scheduling validation and transactional notifications.",
     category: "FULL STACK · HEALTHCARE · RBAC & BUSINESS LOGIC",
@@ -96,7 +143,7 @@ export const projects = [
   },
   {
     id: "weather-jankar",
-    number: "03",
+    number: "04",
     title: "Weather Jankar",
     tagline: "Lightweight live weather engine with resilient client-side API error handling.",
     category: "FRONTEND · REST API INTEGRATION · JAVASCRIPT",
@@ -114,7 +161,7 @@ export const projects = [
     ],
     architectureSummary:
       "Search Input → Query Sanitizer → Async API Fetch → Response Guard → Dynamic DOM Render",
-    featured: true,
+    featured: false,
     keyHighlights: [
       "Clean client-side query validation and defensive error handling for non-200 responses",
       "Real-time visual rendering of temperature, humidity, and wind metrics",
@@ -134,7 +181,7 @@ export const projects = [
   },
   {
     id: "javascript-practice",
-    number: "04",
+    number: "05",
     title: "JavaScript Practice Repository",
     tagline: "Continuous learning and progression log of core JavaScript fundamentals.",
     category: "FOUNDATIONS · PRACTICE & PROGRESSION",

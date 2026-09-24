@@ -44,14 +44,14 @@ const {
           <span class="text-[var(--text-muted)] uppercase text-[10px]">ROLE:</span>
           <span class="text-[var(--text-primary)] font-semibold ml-1">Architect & Full Stack Developer</span>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 w-full sm:w-auto">
           <a
             href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="px-4 py-2 rounded-md bg-[var(--accent)] hover:opacity-90 text-white text-xs font-mono uppercase tracking-wider transition-opacity flex items-center gap-1.5 font-semibold"
+            class="w-full sm:w-auto min-h-[44px] px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white text-xs font-mono uppercase tracking-wider transition-opacity flex items-center justify-center gap-2 font-semibold shadow-xs"
           >
-            <span>GitHub Repo</span>
+            <span>{repoUrl?.includes('github.com') ? 'GitHub Repo' : 'Launch Live System'}</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
           </a>
         </div>
@@ -78,16 +78,16 @@ const {
 
   <!-- Bottom CTA: Next Project or Home -->
   <section class="py-16 bg-[var(--surface-subtle)] hairline-b">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6">
       <div>
         <div class="text-xs font-mono text-[var(--text-muted)] uppercase">SYSTEM CASE STUDY COMPLETED</div>
         <div class="text-xl font-serif text-[var(--text-primary)] mt-1">Explore other engineered systems</div>
       </div>
-      <div class="flex items-center gap-4 text-xs font-mono">
-        <a href="/#work" class="px-5 py-3 rounded-md bg-[var(--accent)] hover:opacity-90 text-white uppercase tracking-wider transition-opacity font-semibold">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 text-xs font-mono">
+        <a href="/#work" class="px-5 py-3 min-h-[44px] rounded-md bg-[var(--accent)] hover:opacity-90 text-white uppercase tracking-wider transition-opacity font-semibold flex items-center justify-center text-center">
           View All Systems
         </a>
-        <a href="/contact" class="px-5 py-3 rounded-md bg-[var(--surface)] hover:bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] uppercase tracking-wider transition-colors">
+        <a href="/contact" class="px-5 py-3 min-h-[44px] rounded-md bg-[var(--surface)] hover:bg-[var(--surface-subtle)] border border-[var(--border)] text-[var(--text-primary)] uppercase tracking-wider transition-colors flex items-center justify-center text-center">
           Let's Talk
         </a>
       </div>
